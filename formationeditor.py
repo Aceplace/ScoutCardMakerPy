@@ -34,7 +34,7 @@ class FormationEditor(Frame):
 
         formation_visualizer_frame = Frame(self)
         formation_visualizer_frame.pack(fill=BOTH, expand=TRUE)
-        self.formation_visualizer = FormationVisualizer(formation_visualizer_frame)
+        self.formation_visualizer = FormationVisualizer(formation_visualizer_frame, lambda label, x, y: self.update_position_handler(label, x, y))
         self.formation_visualizer.arrange_players_in_formation(self.current_formation)
 
         self.update_entry_boxes_with_coordinates()
@@ -42,23 +42,18 @@ class FormationEditor(Frame):
 
         frame = Frame(root, bd=2, relief=SUNKEN)
 
-
-
-
     def update_positions(self):
-        self.update_position(self.t_entry, 'T')
-        self.update_position(self.h_entry, 'H')
-        self.update_position(self.x_entry, 'X')
-        self.update_position(self.y_entry, 'Y')
-        self.update_position(self.z_entry, 'Z')
-        self.update_position(self.q_entry, 'Q')
+        self.update_position_from_string(self.t_entry.get(), 'T')
+        self.update_position_from_string(self.h_entry.get(), 'H')
+        self.update_position_from_string(self.x_entry.get(), 'X')
+        self.update_position_from_string(self.y_entry.get(), 'Y')
+        self.update_position_from_string(self.z_entry.get(), 'Z')
+        self.update_position_from_string(self.q_entry.get(), 'Q')
 
         self.formation_visualizer.arrange_players_in_formation(self.current_formation)
         self.update_entry_boxes_with_coordinates()
 
-    def update_position(self, entry, label):
-        coordinate_text = entry.get()
-        #convert coordinates to numbers
+    def update_position_from_string(self, coordinate_text, label):
         try:
             split_text = coordinate_text.split(',')
             x,y = None, None
@@ -73,7 +68,10 @@ class FormationEditor(Frame):
         except Exception: #Any exceptions will simply cause us to use the coordinates already in place
             pass
 
-
+    def update_player_position_from_coordinates(self, x, y, label):
+        self.current_formation.players[label].x = x
+        self.current_formation.players[label].y = y
+        self.update_entry_boxes_with_coordinates()
 
     def update_entry_boxes_with_coordinates(self):
         self.t_entry.delete(0, END)
@@ -89,22 +87,20 @@ class FormationEditor(Frame):
         self.q_entry.delete(0, END)
         self.q_entry.insert(0, self.get_string_for_player_coordinates('Q'))
 
-
     def get_string_for_player_coordinates(self, label):
         return str(self.current_formation.players[label].x) + ',' + str(self.current_formation.players[label].y)
 
+    def update_position_handler(self, label, x, y):
+        self.current_formation.players[label].x = x
+        self.current_formation.players[label].y = y
+        self.update_entry_boxes_with_coordinates()
 
 
 
 
 
 
-
-
-
-
-
-
-root = Tk()
-FormationEditor(root)
-root.mainloop()
+if __name__=='__main__':
+    root = Tk()
+    FormationEditor(root)
+    root.mainloop()

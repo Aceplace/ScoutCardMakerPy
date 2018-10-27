@@ -22,9 +22,9 @@ RIGHT_BOTTOM_OF_NUMBERS = CENTER_X_POS + HORIZONTAL_COORDINATE_SIZE * 39
 FIVE_YARDS = VERTICAL_COORDINATE_SIZE * 5
 
 class FormationVisualizer(Frame):
-    def __init__(self, root):
+    def __init__(self, root, visualizer_update_position_handler):
         Frame.__init__(self, root)
-
+        self.visualizer_update_position_handler = visualizer_update_position_handler
 
         self.grid_rowconfigure(0, weight=1)
         self.grid_columnconfigure(0, weight=1)
@@ -73,19 +73,24 @@ class FormationVisualizer(Frame):
         self.player_shapes = {}
         formation = Formation() #create default formation to place players around in
         for label, player in formation.players.items():
-            x, y = FormationVisualizer.player_coordinates_to_canvas(player)
+            x, y = FormationVisualizer.player_coordinates_to_canvas(player.x, player.y)
             self.player_shapes[label] = {"Oval" : self.canvas.create_oval(x - PLAYER_WIDTH / 2, y - PLAYER_HEIGHT / 2, x + PLAYER_WIDTH / 2, y + PLAYER_HEIGHT / 2, fill="white"),
-                                        "Label" : self.canvas.create_text(x, y, text=player.label, font=LABEL_FONT)}
+                                        "Text" : self.canvas.create_text(x, y, text=player.label, font=LABEL_FONT),
+                                        "Label" : player.label}
 
     def arrange_players_in_formation(self, formation):
         for label, player in formation.players.items():
-            x, y = FormationVisualizer.player_coordinates_to_canvas(player)
+            x, y = FormationVisualizer.player_coordinates_to_canvas(player.x, player.y)
             self.canvas.coords(self.player_shapes[label]["Oval"], x - PLAYER_WIDTH / 2, y - PLAYER_HEIGHT / 2, x + PLAYER_WIDTH / 2, y + PLAYER_HEIGHT / 2)
-            self.canvas.coords(self.player_shapes[label]["Label"], x, y)
+            self.canvas.coords(self.player_shapes[label]["Text"], x, y)
 
     @staticmethod
-    def player_coordinates_to_canvas(player):
-        return (CENTER_X_POS + player.x * HORIZONTAL_COORDINATE_SIZE, CENTER_Y_POS + player.y * VERTICAL_COORDINATE_SIZE)
+    def player_coordinates_to_canvas(player_x, player_y):
+        return (CENTER_X_POS + player_x * HORIZONTAL_COORDINATE_SIZE, CENTER_Y_POS + player_y * VERTICAL_COORDINATE_SIZE)
+
+    @staticmethod
+    def canvas_coordinates_to_player(player_x, player_y):
+        return (int((player_x - CENTER_X_POS) / HORIZONTAL_COORDINATE_SIZE), int((player_y - CENTER_Y_POS) / VERTICAL_COORDINATE_SIZE))
 
 
     def on_press(self, event): #get initial location of object to be moved
@@ -117,27 +122,33 @@ class FormationVisualizer(Frame):
             if abs(delta_x) > HORIZONTAL_COORDINATE_SIZE:
                 move_x = int(delta_x / HORIZONTAL_COORDINATE_SIZE) * HORIZONTAL_COORDINATE_SIZE
                 self.canvas.move(self.drag_data["item"]["Oval"], move_x, 0)
-                self.canvas.move(self.drag_data["item"]["Label"], move_x, 0)
+                self.canvas.move(self.drag_data["item"]["Text"], move_x, 0)
                 self.drag_data["x"] = self.drag_data["x"] + move_x
+                self.visualizer_update_position_handler(self.drag_data["item"]["Label"], *self.visualizer_coordinates_to_formation_coordinates(self.drag_data["item"]["Text"]))
             if abs(delta_y) > VERTICAL_COORDINATE_SIZE:
                 move_y = int(delta_y / VERTICAL_COORDINATE_SIZE) * VERTICAL_COORDINATE_SIZE
                 self.canvas.move(self.drag_data["item"]["Oval"], 0, move_y)
-                self.canvas.move(self.drag_data["item"]["Label"], 0, move_y)
+                self.canvas.move(self.drag_data["item"]["Text"], 0, move_y)
                 self.drag_data["y"] = self.drag_data["y"] + move_y
-            #self.canvas.move(self.drag_data["item"], delta_x, delta_y)
-            # record the new position
-            #self.drag_data["x"] = x
-            #self.drag_data["y"] = y
+                self.visualizer_update_position_handler(self.drag_data["item"]["Label"], *self.visualizer_coordinates_to_formation_coordinates(self.drag_data["item"]["Text"]))
 
     def select_player_to_drag(self, drag_item):
         for player in self.player_shapes.values():
-            if drag_item is player["Oval"] or drag_item is player["Label"]:
+            if drag_item is player["Oval"] or drag_item is player["Text"]:
                 return player
         return None
 
+    def visualizer_coordinates_to_formation_coordinates(self, player_text):
+        coordinates = self.canvas.coords(player_text)
+        return FormationVisualizer.canvas_coordinates_to_player(coordinates[0], coordinates[1])
+
+
+def handler(label, x, y):
+    print("Handle " + label + " " + str(x) + " " + str(y))
+
 if __name__ == "__main__":
     root = Tk()
-    fvc = FormationVisualizer(root)
+    fvc = FormationVisualizer(root, handler)
     flipped_formation = Formation()
     flipped_formation.flip_formation()
     fvc.arrange_players_in_formation(flipped_formation)
