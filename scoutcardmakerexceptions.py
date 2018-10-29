@@ -1,0 +1,2 @@
+class ScoutCardMakerException(Exception):
+    pass
