@@ -53,7 +53,7 @@ class FormationLibraryEditor(Frame):
 
         formation_library_frame = Frame(self)
         Label(formation_library_frame, text='Formations').pack()
-        self.delete_selected_btn = Button(formation_library_frame, text='Delete Selected Formation')
+        self.delete_selected_btn = Button(formation_library_frame, text='Delete Selected Formation', command=self.delete_selected_formation)
         self.delete_selected_btn.pack()
         library_scrollbar = Scrollbar(formation_library_frame, orient=VERTICAL)
         self.library_lb = Listbox(formation_library_frame, yscrollcommand=library_scrollbar.set)
@@ -68,7 +68,7 @@ class FormationLibraryEditor(Frame):
 
         self.refresh_library_listbox()
 
-        self.pack(fill=BOTH, expand=True)
+        #self.pack(fill=BOTH, expand=True)
 
     def library_on_select(self, event):
         listbox = event.widget
@@ -101,14 +101,22 @@ class FormationLibraryEditor(Frame):
         except ScoutCardMakerException as e:
             messagebox.showerror('Save Formation Error', e)
 
+    def delete_selected_formation(self):
+        if self.library_lb.curselection():
+            try:
+                index = self.library_lb.curselection()[0]
+                self.controller.delete_formation_from_library(self.library_lb.get(index))
+                self.refresh_library_listbox()
+            except ScoutCardMakerException as e:
+                messagebox.showerror('Delete Formation Error', e)
+
+
     def load_composite_formation(self):
         try:
             self.controller.load_composite_formation_from_library(self.composite_name_entry.get())
             self.formation_visual_editor.visualize_formation(self.controller.current_formation)
         except ScoutCardMakerException as e:
             messagebox.showerror('Load Composite Error', e)
-
-
 
 
     def refresh_library_listbox(self):

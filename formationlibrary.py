@@ -45,6 +45,28 @@ class FormationLibrary:
         self.formations[modified_formation_name] = formation_to_save
         self.formations[flipped_modified_formation_name] = flipped_formation_to_save
 
+    def delete_formation_from_library(self, formation_name):
+        formation_words = formation_name.strip().upper().split()
+        formation_to_delete = formation_name
+        opposite_formation_to_delete = None
+        if formation_words[-1] == 'LT':
+            opposite_formation_to_delete = ' '.join([formation_words[0], 'RT'])
+        elif formation_words[-1] == 'RT':
+            opposite_formation_to_delete = ' '.join([formation_words[0], 'LT'])
+        else:
+            raise ScoutCardMakerException('Can\'t delete formation that doesn\'t end in LT or RT')
+
+        try:
+            del self.formations[formation_to_delete]
+        except KeyError:
+            raise ScoutCardMakerException(f'{formation_to_delete} not in formations.')
+
+        try:
+            del self.formations[opposite_formation_to_delete]
+        except KeyError:
+            raise ScoutCardMakerException(f'{opposite_formation_to_delete} not in formations.')
+
+
     def save_library(self, filename):
         file_object = open(filename, 'wb')
         pickle.dump(self.formations, file_object)

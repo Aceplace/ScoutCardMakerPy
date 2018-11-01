@@ -22,6 +22,9 @@ class LibraryEditorController:
         self.current_formation.override_player_tags = override_player_tags
         self.formation_library.add_formation_to_library(formation_name, self.current_formation)
 
+    def delete_formation_from_library(self, formation_name):
+        self.formation_library.delete_formation_from_library(formation_name)
+
     def print_player_positions(self):
         for key, player in self.current_formation.players.items():
             print("{} : {} , {}".format(player.label, player.x, player.y))
