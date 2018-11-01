@@ -54,6 +54,12 @@ class FormationLibrary:
         file_object = open(filename, 'rb')
         self.formations = pickle.load(file_object)
 
+    def get_formation(self, formation_name):
+        formation = Formation()
+        formation.copy_formation_from_formation(self.formations[formation_name])
+        return formation
+
+
     def get_composite_formation(self, formation_name):
         formation_words = formation_words = formation_name.strip().upper().split()
 
