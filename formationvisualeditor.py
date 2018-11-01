@@ -1,7 +1,6 @@
 from tkinter import *
-from formationvisualizer import FormationVisualizer
 from formation import Formation
-from formationeditorcontroller import FormationEditorController
+from formationvisualeditorcontroller import FormationVisualEditorController
 
 #Constant Values
 CENTER_X_POS = 600
@@ -31,7 +30,7 @@ def canvas_coordinates_to_player(player_x, player_y):
     return (int((player_x - CENTER_X_POS) / HORIZONTAL_COORDINATE_SIZE), int((player_y - CENTER_Y_POS) / VERTICAL_COORDINATE_SIZE))
 
 
-class FormationEditor(Frame):
+class FormationVisualEditor(Frame):
     def __init__(self, root, controller):
         Frame.__init__(self, root)
         self.pack(fill=BOTH, expand=TRUE)
@@ -154,6 +153,6 @@ class FormationEditor(Frame):
 
 if __name__=='__main__':
     root = Tk()
-    controller = FormationEditorController(Formation())
-    FormationEditor(root, controller)
+    controller = FormationVisualEditorController(Formation())
+    FormationVisualEditor(root, controller)
     root.mainloop()

@@ -1,6 +1,6 @@
 import formation
 
-class FormationEditorController:
+class FormationVisualEditorController:
     def __init__(self, formation):
         self.current_formation = formation
 

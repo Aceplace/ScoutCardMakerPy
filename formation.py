@@ -43,7 +43,7 @@ class Formation:
 
 
     def override_formation(self, override_formation):
-        for tag in override_formation.override_players_tags:
+        for tag in override_formation.override_player_tags:
             self.players[tag].x = override_formation.players[tag].x
             self.players[tag].y = override_formation.players[tag].y
 
