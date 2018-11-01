@@ -1,8 +1,9 @@
-import formation
+from formation import Formation
 
-class FormationVisualEditorController:
-    def __init__(self, formation):
-        self.current_formation = formation
+class LibraryEditorController:
+    def __init__(self, formation_library):
+        self.current_formation = Formation()
+        self.formation_library = formation_library
 
     def update_player_in_formation(self, tag, x, y):
         self.current_formation.players[tag].x = x

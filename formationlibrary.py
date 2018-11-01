@@ -93,6 +93,12 @@ class FormationLibrary:
 
         return formation
 
+    def get_sorted_formation_names(self):
+        return sorted([formation_name for formation_name in self.formations.keys() ])
+
+    def get_sorted_formation_names_right(self):
+        return sorted([formation_name for formation_name in self.formations.keys() if formation_name.split()[-1] == 'RT'])
+
 if __name__ == '__main__':
     library = FormationLibrary()
 

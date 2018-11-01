@@ -1,6 +1,5 @@
 from tkinter import *
 from formation import Formation
-from formationvisualeditorcontroller import FormationVisualEditorController
 
 #Constant Values
 CENTER_X_POS = 600
@@ -33,22 +32,21 @@ def canvas_coordinates_to_player(player_x, player_y):
 class FormationVisualEditor(Frame):
     def __init__(self, root, controller):
         Frame.__init__(self, root)
-        self.pack(fill=BOTH, expand=TRUE)
+        #self.pack(fill=BOTH, expand=TRUE)
 
         self.controller = controller
 
-        self.formation_visualizer_frame= Frame(self)
-        self.formation_visualizer_frame.pack(fill=BOTH, expand=TRUE)
+        #self.formation_visualizer_frame.pack(fill=BOTH, expand=TRUE)
 
-        self.formation_visualizer_frame.grid_rowconfigure(0, weight=1)
-        self.formation_visualizer_frame.grid_columnconfigure(0, weight=1)
+        self.grid_rowconfigure(0, weight=1)
+        self.grid_columnconfigure(0, weight=1)
 
-        xscrollbar = Scrollbar(self.formation_visualizer_frame, orient=HORIZONTAL)
+        xscrollbar = Scrollbar(self, orient=HORIZONTAL)
         xscrollbar.grid(row=1, column=0, sticky=E+W)
-        yscrollbar = Scrollbar(self.formation_visualizer_frame)
+        yscrollbar = Scrollbar(self)
         yscrollbar.grid(row=0, column=1, sticky=N+S)
 
-        self.canvas = Canvas(self.formation_visualizer_frame, bd=0, xscrollcommand=xscrollbar.set, background='white',
+        self.canvas = Canvas(self, bd=0, xscrollcommand=xscrollbar.set, background='white',
                         yscrollcommand=yscrollbar.set, scrollregion=(0,0,1200,800))
         self.canvas.grid(row=0, column=0, sticky=N+S+E+W)
         xscrollbar.config(command=self.canvas.xview)
@@ -57,7 +55,7 @@ class FormationVisualEditor(Frame):
         self.draw_field_lines()
         self.create_player_shapes_for_visualization()
 
-        self.formation_visualizer_frame.pack(fill=BOTH, expand=True)
+        #self.pack(fill=BOTH, expand=True)
 
         self.drag_data = {"x": 0, "y": 0, "item": None}
         self.canvas.bind("<ButtonPress-1>", self.on_press)
@@ -147,12 +145,3 @@ class FormationVisualEditor(Frame):
     def visualizer_coordinates_to_formation_coordinates(self, player_text):
         coordinates = self.canvas.coords(player_text)
         return canvas_coordinates_to_player(coordinates[0], coordinates[1])
-
-
-
-
-if __name__=='__main__':
-    root = Tk()
-    controller = FormationVisualEditorController(Formation())
-    FormationVisualEditor(root, controller)
-    root.mainloop()
