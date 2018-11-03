@@ -10,6 +10,7 @@ class FormationLibraryEditor(Frame):
         Frame.__init__(self, root)
 
         self.controller = controller
+        controller.editor = self
 
         self.grid_rowconfigure(1, weight=1)
         self.grid_columnconfigure(1, weight=1)
@@ -124,6 +125,9 @@ class FormationLibraryEditor(Frame):
         self.library_lb.delete(0, END)
         for formation in formations:
             self.library_lb.insert(END, formation)
+
+    def refresh_library(self):
+        self.refresh_library_listbox()
 
 
 

@@ -4,6 +4,7 @@ class LibraryEditorController:
     def __init__(self, formation_library):
         self.current_formation = Formation()
         self.formation_library = formation_library
+        self.editor = None
 
     def update_player_in_formation(self, tag, x, y):
         self.current_formation.players[tag].x = x
@@ -24,6 +25,11 @@ class LibraryEditorController:
 
     def delete_formation_from_library(self, formation_name):
         self.formation_library.delete_formation_from_library(formation_name)
+
+    def load_library(self, library_filename):
+        self.formation_library.load_library(library_filename)
+        if self.editor:
+            self.editor.refresh_library()
 
     def print_player_positions(self):
         for key, player in self.current_formation.players.items():
