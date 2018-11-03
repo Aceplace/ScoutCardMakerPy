@@ -1,9 +1,10 @@
 from formation import Formation
+from formationlibrary import FormationLibrary
 
 class LibraryEditorController:
-    def __init__(self, formation_library):
+    def __init__(self):
         self.current_formation = Formation()
-        self.formation_library = formation_library
+        self.formation_library = FormationLibrary()
         self.editor = None
 
     def update_player_in_formation(self, tag, x, y):
@@ -24,6 +25,11 @@ class LibraryEditorController:
 
     def delete_formation_from_library(self, formation_name):
         self.formation_library.delete_formation_from_library(formation_name)
+
+    def new_library(self):
+        self.formation_library = FormationLibrary()
+        if self.editor:
+            self.editor.refresh_library()
 
     def load_library(self, library_filename):
         self.formation_library.load_library(library_filename)

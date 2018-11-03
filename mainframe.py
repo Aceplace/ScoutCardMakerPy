@@ -2,7 +2,6 @@ from tkinter import *
 from tkinter import filedialog
 from tkinter import messagebox
 import os
-from formationlibrary import FormationLibrary
 from formationlibraryedtior import FormationLibraryEditor
 from libraryeditorcontroller import LibraryEditorController
 from scoutcardmakerexceptions import ScoutCardMakerException
@@ -15,6 +14,7 @@ class App(Tk):
         menubar = Menu(self)
         filemenu = Menu(menubar, tearoff = 0)
 
+        filemenu.add_command(label='New Library', command=self.new_library)
         filemenu.add_command(label='Open Library', command=self.open_library)
         filemenu.add_command(label='Save Library', command=self.save_library)
         filemenu.add_command(label='Save Library As...', command=self.save_library_as)
@@ -32,11 +32,15 @@ class App(Tk):
 
         self.frames = {}
 
-        self.library_editor_controller = LibraryEditorController(FormationLibrary())
+        self.library_editor_controller = LibraryEditorController()
         self.frames[FormationLibraryEditor] = FormationLibraryEditor(mainframe, self.library_editor_controller)
         self.frames[FormationLibraryEditor].grid(row = 0, column = 0, stick=N+S+E+W)
 
         self.current_library_filename = None
+
+    def new_library(self):
+        self.current_libary_filename = None
+        self.library_editor_controller.new_library()
 
 
     def open_library(self):
@@ -50,7 +54,13 @@ class App(Tk):
 
     def save_library(self):
         try:
-            library_filename = filedialog.asksaveasfilename(initialdir=os.getcwd(), title="Save library", filetypes=(("Scout Card Maker Library", "*.scmfl"),))
+            library_filename = None
+            if self.current_library_filename:
+                library_filename = self.current_library_filename
+            else:
+                self.save_library_as()
+                return
+
             if library_filename:
                 self.library_editor_controller.save_library(library_filename)
                 self.current_library_filename = library_filename
