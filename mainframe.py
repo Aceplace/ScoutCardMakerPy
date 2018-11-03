@@ -41,7 +41,7 @@ class App(Tk):
 
     def open_library(self):
         try:
-            library_filename = filedialog.askopenfilename(initialdir=os.getcwd(), title="Select file", filetypes=(("Scout Card Maker Library", "*.scmfl"),))
+            library_filename = filedialog.askopenfilename(initialdir=os.getcwd(), title="Select library", filetypes=(("Scout Card Maker Library", "*.scmfl"),))
             if library_filename:
                 self.library_editor_controller.load_library(library_filename)
                 self.current_library_filename = library_filename
@@ -49,10 +49,25 @@ class App(Tk):
                 messagebox.showerror('Open Library Error', e)
 
     def save_library(self):
-        pass
+        try:
+            library_filename = filedialog.asksaveasfilename(initialdir=os.getcwd(), title="Save library", filetypes=(("Scout Card Maker Library", "*.scmfl"),))
+            if library_filename:
+                self.library_editor_controller.save_library(library_filename)
+                self.current_library_filename = library_filename
+        except ScoutCardMakerException as e:
+                messagebox.showerror('Save Library Error', e)
 
     def save_library_as(self):
-        pass
+        try:
+            library_filename = filedialog.asksaveasfilename(initialdir=os.getcwd(),
+                                                            title='Save library',
+                                                            filetypes=(('Scout Card Maker Library', '*.scmfl'),),
+                                                            defaultextension='.scmfl')
+            if library_filename:
+                self.library_editor_controller.save_library(library_filename)
+                self.current_library_filename = library_filename
+        except ScoutCardMakerException as e:
+                messagebox.showerror('Save Library Error', e)
 
 
 

@@ -102,7 +102,7 @@ class FormationVisualEditor(Frame):
         y = self.canvas.canvasy(event.y)
         drag_items = self.canvas.find_overlapping(x-1, y-1, x+1, y+1)
         if drag_items:
-            player_drag_item = self.select_player_to_drag(drag_items[0])
+            player_drag_item = self.select_player_to_drag(drag_items)
             self.drag_data["item"] = player_drag_item
             self.drag_data["x"] = x
             self.drag_data["y"] = y
@@ -136,10 +136,11 @@ class FormationVisualEditor(Frame):
                 self.drag_data["y"] = self.drag_data["y"] + move_y
                 self.controller.update_player_in_formation(self.drag_data["item"]["Label"], *self.visualizer_coordinates_to_formation_coordinates(self.drag_data["item"]["Text"]))
 
-    def select_player_to_drag(self, drag_item):
-        for player in self.player_shapes.values():
-            if drag_item is player["Oval"] or drag_item is player["Text"]:
-                return player
+    def select_player_to_drag(self, drag_items):
+        for drag_item in drag_items:
+            for player in self.player_shapes.values():
+                if drag_item is player["Oval"] or drag_item is player["Text"]:
+                    return player
         return None
 
     def visualizer_coordinates_to_formation_coordinates(self, player_text):

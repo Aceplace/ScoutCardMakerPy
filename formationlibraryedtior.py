@@ -29,9 +29,7 @@ class FormationLibraryEditor(Frame):
         formation_entry_frame.grid(row=0, column=0)
 
         override_checkboxes_frame = Frame(self)
-        self.is_override_cb_value = BooleanVar()
-        self.is_override_cb = Checkbutton(override_checkboxes_frame, text='Override Formation', variable=self.is_override_cb_value)
-        self.is_override_cb.pack(anchor=W)
+        Label(override_checkboxes_frame, text='Affected Formations').pack(anchor=W)
         self.t_cb_value = BooleanVar()
         self.t_cb = Checkbutton(override_checkboxes_frame, text='T', variable=self.t_cb_value)
         self.t_cb.pack(anchor=W)
@@ -76,27 +74,31 @@ class FormationLibraryEditor(Frame):
         if listbox.curselection():
             index = listbox.curselection()[0]
             self.controller.load_formation_from_library(listbox.get(index))
+            self.t_cb_value.set(True if 'T' in self.controller.current_formation.affected_player_tags else False)
+            self.h_cb_value.set(True if 'H' in self.controller.current_formation.affected_player_tags else False)
+            self.x_cb_value.set(True if 'X' in self.controller.current_formation.affected_player_tags else False)
+            self.y_cb_value.set(True if 'Y' in self.controller.current_formation.affected_player_tags else False)
+            self.z_cb_value.set(True if 'Z' in self.controller.current_formation.affected_player_tags else False)
+            self.q_cb_value.set(True if 'Q' in self.controller.current_formation.affected_player_tags else False)
             self.formation_visual_editor.visualize_formation(self.controller.current_formation)
 
     def save_formation(self):
         try:
-            is_override_formation = self.is_override_cb_value.get()
-
-            override_player_tags = []
+            affected_player_tags = []
             if self.t_cb_value.get():
-                override_player_tags.append('T')
+                affected_player_tags.append('T')
             if self.h_cb_value.get():
-                override_player_tags.append('H')
+                affected_player_tags.append('H')
             if self.x_cb_value.get():
-                override_player_tags.append('X')
+                affected_player_tags.append('X')
             if self.y_cb_value.get():
-                override_player_tags.append('Y')
+                affected_player_tags.append('Y')
             if self.z_cb_value.get():
-                override_player_tags.append('Z')
+                affected_player_tags.append('Z')
             if self.q_cb_value.get():
-                override_player_tags.append('Q')
+                affected_player_tags.append('Q')
 
-            self.controller.save_formation_to_library(self.formation_name_entry.get(), is_override_formation, override_player_tags)
+            self.controller.save_formation_to_library(self.formation_name_entry.get(), affected_player_tags)
             self.refresh_library_listbox()
 
         except ScoutCardMakerException as e:

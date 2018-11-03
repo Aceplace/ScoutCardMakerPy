@@ -29,21 +29,18 @@ class Formation:
         self.players['Y'] = self.y
         self.players['Z'] = self.z
         self.players['Q'] = self.q
-        self.is_override_formation = False
-        self.override_player_tags = []
+        self.affected_player_tags = []
 
     def copy_formation_from_formation(self, copy_formation):
         for tag, player in copy_formation.players.items():
             self.players[tag].x = copy_formation.players[tag].x
             self.players[tag].y = copy_formation.players[tag].y
-        self.override_player_tags = []
-        for tag in copy_formation.override_player_tags:
-            self.override_player_tags.append(tag)
-        self.is_override_formation = copy_formation.is_override_formation
-
+        self.affected_player_tags = []
+        for tag in copy_formation.affected_player_tags:
+            self.affected_player_tags.append(tag)
 
     def override_formation(self, override_formation):
-        for tag in override_formation.override_player_tags:
+        for tag in override_formation.affected_player_tags:
             self.players[tag].x = override_formation.players[tag].x
             self.players[tag].y = override_formation.players[tag].y
 
