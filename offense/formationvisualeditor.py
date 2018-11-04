@@ -1,5 +1,5 @@
 from tkinter import *
-from formation import Formation
+from offense.formation import Formation
 
 #Constant Values
 CENTER_X_POS = 600

@@ -1,8 +1,7 @@
 from tkinter import *
-from formation import Formation
 from formationvisualeditorcontroller import FormationVisualEditorController
-from formationvisualeditor import FormationVisualEditor
-from formationlibrary import FormationLibrary
+from offense.formationvisualeditor import FormationVisualEditor
+from offense.formationlibrary import FormationLibrary
 
 # if __name__=='__main__':
 #     root = Tk()

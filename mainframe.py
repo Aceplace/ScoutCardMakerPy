@@ -2,9 +2,9 @@ from tkinter import *
 from tkinter import filedialog
 from tkinter import messagebox
 import os
-from formationlibraryedtior import FormationLibraryEditor
-from libraryeditorcontroller import LibraryEditorController
-from scoutcardmakerexceptions import ScoutCardMakerException
+from offense.formationlibraryedtior import FormationLibraryEditor
+from offense.libraryeditorcontroller import LibraryEditorController
+from misc.scoutcardmakerexceptions import ScoutCardMakerException
 
 class App(Tk):
     def __init__(self, *args, **kwargs):

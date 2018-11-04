@@ -1,5 +1,5 @@
-from formation import Formation
-from scoutcardmakerexceptions import ScoutCardMakerException
+from offense.formation import Formation
+from misc.scoutcardmakerexceptions import ScoutCardMakerException
 import pickle
 
 class FormationLibrary:

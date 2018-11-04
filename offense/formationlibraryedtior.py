@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
-from formationvisualeditor import FormationVisualEditor
-from scoutcardmakerexceptions import *
+from offense.formationvisualeditor import FormationVisualEditor
+from misc.scoutcardmakerexceptions import *
 
 
 
@@ -134,9 +134,8 @@ class FormationLibraryEditor(Frame):
 
 
 
-from formationlibrary import FormationLibrary
-from libraryeditorcontroller import LibraryEditorController
-from formation import Formation
+from offense.formationlibrary import FormationLibrary
+from offense.libraryeditorcontroller import LibraryEditorController
 
 if __name__ == '__main__':
 
