@@ -101,29 +101,37 @@ class AlignmentPlacementRuleGUI(Frame):
         Frame.__init__(self, root)
         self.controller = controller
 
+
+        Label(self, text='Alignment:').grid(row=0, column=0, sticky=E)
         alignment_names = [name for name, member in Alignment.__members__.items()]
         self.alignment_value = StringVar()
         self.alignment_value.set(alignment_names[0])
-        self.alignment_om = OptionMenu(self, self.alignment_value, *alignment_names)
-        self.alignment_om.pack()
+        self.alignment_om = OptionMenu(self, self.alignment_value, *alignment_names, command=self.update_defender)
+        self.alignment_om.grid(row=0, column=1, sticky=W+E)
 
+        Label(self, text='Direction:').grid(row=1, column=0, sticky=E)
         direction_names = [name for name, member in Direction.__members__.items()]
         self.direction_value = StringVar()
         self.direction_value.set(direction_names[0])
-        self.direction_om = OptionMenu(self, self.direction_value, *direction_names)
-        self.direction_om.pack()
+        self.direction_om = OptionMenu(self, self.direction_value, *direction_names, command=self.update_defender)
+        self.direction_om.grid(row=1, column=1, sticky=W+E)
 
+        Label(self, text='Strength Type:').grid(row=2, column=0, sticky=E)
         strength_type_names = [name for name, member in StrengthType.__members__.items()]
         self.strength_type_value = StringVar()
         self.strength_type_value.set(strength_type_names[0])
-        self.strength_type_om = OptionMenu(self, self.strength_type_value, *strength_type_names)
-        self.strength_type_om.pack()
+        self.strength_type_om = OptionMenu(self, self.strength_type_value, *strength_type_names, command=self.update_defender)
+        self.strength_type_om.grid(row=2, column=1, sticky=W+E)
 
-        self.depth_sb = Spinbox(self, from_ = 1 , to_ = 15, state='readonly')
-        self.depth_sb.pack()
+        Label(self, text='Depth:').grid(row=3, column=0, sticky=E)
+        self.depth_sb = Spinbox(self, from_ = 1 , to_ = 15, state='readonly', command=self.update_defender)
+        self.depth_sb.grid(row=3, column=1, sticky=W+E)
 
-    def update_gui_with_defender_info(self, defender):
-        alignment_placement_rule = defender.placement_rule
+        self.update_gui_with_defender_info()
+
+
+    def update_gui_with_defender_info(self):
+        alignment_placement_rule = self.controller.current_defender.placement_rule
 
         self.alignment_value.set(alignment_placement_rule.alignment.name)
         self.direction_value.set(alignment_placement_rule.direction.name)
@@ -133,16 +141,36 @@ class AlignmentPlacementRuleGUI(Frame):
         self.depth_sb.insert(0, alignment_placement_rule.depth)
         self.depth_sb.configure(state='readonly')
 
-    def update_player(self):
-        pass
+
+    def update_defender(self, *args):
+        alignment = Alignment[self.alignment_value.get()]
+        direction = Direction[self.direction_value.get()]
+        strength_type = StrengthType[self.strength_type_value.get()]
+        depth = int(self.depth_sb.get())
+        print((alignment, direction, strength_type, depth))
+
+        alignment_placement_rule = AlignmentPlacementRule(alignment, direction, strength_type, depth)
+        self.controller.set_defender_placement_rule(alignment_placement_rule)
 
 
-from defensiveformation.defensiveutils import *
+
+
+
+
 
 if __name__=='__main__':
+    from defensiveformation.defensiveutils import *
+    class MockController():
+        def __init__(self):
+            self.defense = get_default_defense()
+            self.current_defender = self.defense.p
+
+        def set_defender_placement_rule(self, placement_rule):
+            self.current_defender = self.current_defender.placement_rule = placement_rule
+
+
     root = Tk()
-    gui = AlignmentPlacementRuleGUI(root, None)
-    defense = get_default_defense()
-    gui.update_gui_with_defender_info(defense.p)
+    controller = MockController()
+    gui = AlignmentPlacementRuleGUI(root, controller)
     gui.pack()
     root.mainloop()
