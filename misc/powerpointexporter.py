@@ -2,7 +2,7 @@ from pptx import Presentation
 from pptx.enum.shapes import MSO_CONNECTOR_TYPE, MSO_AUTO_SHAPE_TYPE
 from pptx.dml.color import RGBColor
 from pptx.util import Cm, Pt
-from offense.formation import Formation
+from offensiveformation.formation import Formation
 
 #Constant
 CENTER_X_POS = Cm(13.2)

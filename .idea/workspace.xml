@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/offense/libraryeditorcontroller.py" line="24" />
+    <bookmark url="file://$PROJECT_DIR$/offensiveformation/libraryeditorcontroller.py" line="24" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f938c9e-117d-4a20-aa45-21b76d9afe45" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/ScoutCardMakerPY.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ScoutCardMakerPY.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/defense.py" beforeDir="false" afterPath="$PROJECT_DIR$/defense.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/defensivevisualizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/defensivevisualizer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/formationutils" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/formationutils.py" beforeDir="false" afterPath="$PROJECT_DIR$/formationutils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/defense.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/defensivevisualizer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/formationutils.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/mainframe.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainframe.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/misc/powerpointexporter.py" beforeDir="false" afterPath="$PROJECT_DIR$/misc/powerpointexporter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/offense/formationlibrary.py" beforeDir="false" afterPath="$PROJECT_DIR$/offense/formationlibrary.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/offense/formationlibraryedtior.py" beforeDir="false" afterPath="$PROJECT_DIR$/offense/formationlibraryedtior.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/offense/formationvisualeditor.py" beforeDir="false" afterPath="$PROJECT_DIR$/offense/formationvisualeditor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/offense/libraryeditorcontroller.py" beforeDir="false" afterPath="$PROJECT_DIR$/offense/libraryeditorcontroller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/placementrules.py" beforeDir="false" afterPath="$PROJECT_DIR$/placementrules.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/offense/formation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/offense/formationlibrary.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/offense/formationlibraryedtior.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/offense/formationvisualeditor.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/offense/libraryeditorcontroller.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/placementrules.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,106 +33,101 @@
         <counts>
           <entry key="project.closed" value="9" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.open.time.3" value="5" />
+          <entry key="project.open.time.3" value="6" />
           <entry key="project.open.time.4" value="3" />
-          <entry key="project.opened" value="9" />
+          <entry key="project.opened" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="formationutils" value="1" />
-          <entry key="py" value="14" />
+          <entry key="py" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="15" />
+          <entry key="Python" value="16" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="13965" />
+          <entry key="py" value="13995" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="13965" />
+          <entry key="Python" value="13995" />
         </counts>
       </usages-collector>
     </session>
     <session id="518015055">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
-          <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.closed" value="4" />
+          <entry key="project.open.time.6" value="3" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.opened" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="691" />
+          <entry key="dummy" value="17" />
+          <entry key="py" value="2651" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="691" />
+          <entry key="PLAIN_TEXT" value="17" />
+          <entry key="Python" value="2651" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="py" value="26" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Python" value="26" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/defensiveformation/defense.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/defensiveformation/defensiveutils.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="176">
+              <caret line="8" column="105" selection-start-line="8" selection-start-column="105" selection-end-line="8" selection-end-column="105" />
+              <folding>
+                <element signature="e#0#46#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/misc/formationutils.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="726">
+              <caret line="33" column="10" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/defense.py">
+        <entry file="file://$PROJECT_DIR$/defensiveformation/alignmentplacementrule.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="31" column="96" selection-start-line="31" selection-start-column="96" selection-end-line="31" selection-end-column="96" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/placementrules.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1068">
-              <caret line="202" column="52" selection-start-line="202" selection-start-column="52" selection-end-line="202" selection-end-column="52" />
+            <state relative-caret-position="155">
+              <caret line="135" column="28" lean-forward="true" selection-start-line="135" selection-start-column="28" selection-end-line="135" selection-end-column="28" />
               <folding>
-                <element signature="e#0#21#0" expanded="true" />
-                <marker date="1541370334102" expanded="true" signature="384:1062" ph="..." />
-                <marker date="1541370334102" expanded="true" signature="1093:1094" ph="..." />
-                <marker date="1541370334102" expanded="true" signature="1093:1098" ph="..." />
-                <marker date="1541370334102" expanded="true" signature="5117:5166" ph="..." />
-                <marker date="1541370334102" expanded="true" signature="5190:7848" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/formationutils.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="122" lean-forward="true" selection-start-line="122" selection-end-line="122" />
-              <folding>
-                <marker date="1541369555365" expanded="true" signature="100:606" ph="..." />
-                <marker date="1541369555365" expanded="true" signature="1445:1848" ph="..." />
-                <marker date="1541369555365" expanded="true" signature="1945:1950" ph="..." />
-                <marker date="1541369555365" expanded="true" signature="2797:2802" ph="..." />
-                <marker date="1541369555365" expanded="true" signature="3978:5455" ph="..." />
-                <marker date="1541369555365" expanded="true" signature="5259:5455" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/defensivevisualizer.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="97" selection-start-line="97" selection-end-line="97" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-                <marker date="1541360388394" expanded="true" signature="5646:5887" ph="..." />
+                <element signature="e#0#33#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -171,19 +168,32 @@
         <option value="$PROJECT_DIR$/libraryeditorcontroller.py" />
         <option value="$PROJECT_DIR$/mainframe.py" />
         <option value="$PROJECT_DIR$/Offense/formationlibrary.py" />
-        <option value="$PROJECT_DIR$/offense/formationlibrary.py" />
-        <option value="$PROJECT_DIR$/defensivevisualizer.py" />
-        <option value="$PROJECT_DIR$/formationutils.py" />
         <option value="$PROJECT_DIR$/placementrules.py" />
+        <option value="$PROJECT_DIR$/formationutils.py" />
+        <option value="$PROJECT_DIR$/defensivevisualizer.py" />
+        <option value="$PROJECT_DIR$/defense/defensivevisualizer.py" />
+        <option value="$PROJECT_DIR$/offense/formationlibraryedtior.py" />
+        <option value="$PROJECT_DIR$/offense/libraryeditorcontroller.py" />
+        <option value="$PROJECT_DIR$/offense/formationlibrary.py" />
+        <option value="$PROJECT_DIR$/offense/formationvisualeditor.py" />
+        <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/defense/defense.py" />
+        <option value="$PROJECT_DIR$/defense/placementrules.py" />
         <option value="$PROJECT_DIR$/defense.py" />
+        <option value="$PROJECT_DIR$/misc/formationutils.py" />
+        <option value="$PROJECT_DIR$/defensiveformation/placementrules.py" />
+        <option value="$PROJECT_DIR$/defensiveformation/defensivevisualizer.py" />
+        <option value="$PROJECT_DIR$/defensiveformation/defense.py" />
+        <option value="$PROJECT_DIR$/defensiveformation/alignmentplacementrule.py" />
+        <option value="$PROJECT_DIR$/defensiveformation/defensiveutils.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="364" />
-    <option name="y" value="-26" />
+    <option name="x" value="363" />
+    <option name="y" value="-27" />
     <option name="width" value="1401" />
-    <option name="height" value="1001" />
+    <option name="height" value="1002" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -204,12 +214,12 @@
             <path>
               <item name="ScoutCardMakerPY" type="b2602c69:ProjectViewProjectNode" />
               <item name="ScoutCardMakerPY" type="462c0819:PsiDirectoryNode" />
-              <item name="misc" type="462c0819:PsiDirectoryNode" />
+              <item name="defensiveformation" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ScoutCardMakerPY" type="b2602c69:ProjectViewProjectNode" />
               <item name="ScoutCardMakerPY" type="462c0819:PsiDirectoryNode" />
-              <item name="offense" type="462c0819:PsiDirectoryNode" />
+              <item name="misc" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -223,8 +233,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\AcePl\OneDrive\Programming\ScoutCardMakerPY\defensiveformation" />
+      <recent name="C:\Users\AcePl\OneDrive\Programming\ScoutCardMakerPY" />
+      <recent name="C:\Users\AcePl\OneDrive\Programming\ScoutCardMakerPY\defense" />
+      <recent name="C:\Users\AcePl\OneDrive\Programming\ScoutCardMakerPY\misc" />
       <recent name="E:\OneDrive\Programming\ScoutCardMakerPY\Offense" />
-      <recent name="E:\OneDrive\Programming\ScoutCardMakerPY\Misc" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -239,8 +252,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.defensivevisualizer">
-    <configuration name="defense" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.alignmentplacementrule">
+    <configuration name="alignmentplacementrule" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ScoutCardMakerPY" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -248,11 +261,74 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/defensiveformation" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/defense.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/defensiveformation/alignmentplacementrule.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="defense (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="ScoutCardMakerPY" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/defensiveformation" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/defensiveformation/defense.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="defensiveutils" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="ScoutCardMakerPY" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/defensiveformation" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/defensiveformation/defensiveutils.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="defensivevisualizer (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="ScoutCardMakerPY" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/defensiveformation" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/defensiveformation/defensivevisualizer.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -273,70 +349,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/defensivevisualizer.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="formation" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="ScoutCardMakerPY" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/offense" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/offense/formation.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="formationutils" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="ScoutCardMakerPY" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/formationutils.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="placementrules" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="ScoutCardMakerPY" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/placementrules.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\AcePl\OneDrive\Programming\ScoutCardMakerPY\defensiveformation\defensivevisualizer.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -346,19 +359,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.defense" />
       <item itemvalue="Python.defensivevisualizer" />
-      <item itemvalue="Python.formationutils" />
-      <item itemvalue="Python.placementrules" />
-      <item itemvalue="Python.formation" />
+      <item itemvalue="Python.defensivevisualizer (1)" />
+      <item itemvalue="Python.alignmentplacementrule" />
+      <item itemvalue="Python.defense (1)" />
+      <item itemvalue="Python.defensiveutils" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.alignmentplacementrule" />
+        <item itemvalue="Python.defensiveutils" />
+        <item itemvalue="Python.defensivevisualizer (1)" />
+        <item itemvalue="Python.defense (1)" />
         <item itemvalue="Python.defensivevisualizer" />
-        <item itemvalue="Python.formation" />
-        <item itemvalue="Python.placementrules" />
-        <item itemvalue="Python.formationutils" />
-        <item itemvalue="Python.defense" />
       </list>
     </recent_temporary>
   </component>
@@ -377,13 +390,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16596417" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16491044" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3286334" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3264642" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -401,102 +415,102 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/offense/libraryeditorcontroller.py">
+    <entry file="file://$PROJECT_DIR$/formationutils" />
+    <entry file="file://$PROJECT_DIR$/misc/powerpointexporter.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/misc/scoutcardmakerexceptions.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/offensiveformation/libraryeditorcontroller.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="31" column="41" selection-start-line="31" selection-start-column="41" selection-end-line="31" selection-end-column="41" />
+        <state relative-caret-position="66">
+          <caret line="3" column="5" lean-forward="true" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
           <folding>
-            <marker date="1541264964753" expanded="true" signature="1275:1399" ph="..." />
-            <marker date="1541264964753" expanded="true" signature="1440:1683" ph="..." />
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/offense/formationlibrary.py">
+    <entry file="file://$PROJECT_DIR$/offensiveformation/formationvisualeditor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="44">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/offense/formationlibraryedtior.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1606">
-          <caret line="76" column="46" selection-start-line="76" selection-start-column="46" selection-end-line="76" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/offense/formationvisualeditor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2420">
-          <caret line="111" column="34" selection-end-line="148" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/formationutils" />
     <entry file="file://$PROJECT_DIR$/mainframe.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/offensiveformation/formation.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
+          <caret line="9" column="35" lean-forward="true" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/offensiveformation/formationlibrary.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="12" selection-start-column="12" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/defensiveformation/overplacementrule.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1466">
+          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/defensiveformation/defensivevisualizer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/offensiveformation/formationlibraryedtior.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/defensiveformation/defense.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/defensiveformation/defensiveutils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="105" selection-start-line="8" selection-start-column="105" selection-end-line="8" selection-end-column="105" />
           <folding>
-            <element signature="e#0#21#0" expanded="true" />
-            <marker date="1541264964737" expanded="true" signature="1676:1682" ph="..." />
+            <element signature="e#0#46#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/offense/formation.py">
+    <entry file="file://$PROJECT_DIR$/misc/formationutils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+        <state relative-caret-position="726">
+          <caret line="33" column="10" selection-start-line="33" selection-start-column="10" selection-end-line="33" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/formationutils.py">
+    <entry file="file://$PROJECT_DIR$/defensiveformation/alignmentplacementrule.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="122" lean-forward="true" selection-start-line="122" selection-end-line="122" />
+        <state relative-caret-position="155">
+          <caret line="135" column="28" lean-forward="true" selection-start-line="135" selection-start-column="28" selection-end-line="135" selection-end-column="28" />
           <folding>
-            <marker date="1541369555365" expanded="true" signature="100:606" ph="..." />
-            <marker date="1541369555365" expanded="true" signature="1445:1848" ph="..." />
-            <marker date="1541369555365" expanded="true" signature="1945:1950" ph="..." />
-            <marker date="1541369555365" expanded="true" signature="2797:2802" ph="..." />
-            <marker date="1541369555365" expanded="true" signature="3978:5455" ph="..." />
-            <marker date="1541369555365" expanded="true" signature="5259:5455" ph="..." />
+            <element signature="e#0#33#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/defensivevisualizer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="97" selection-start-line="97" selection-end-line="97" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-            <marker date="1541360388394" expanded="true" signature="5646:5887" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/placementrules.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1068">
-          <caret line="202" column="52" selection-start-line="202" selection-start-column="52" selection-end-line="202" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-            <marker date="1541370334102" expanded="true" signature="384:1062" ph="..." />
-            <marker date="1541370334102" expanded="true" signature="1093:1094" ph="..." />
-            <marker date="1541370334102" expanded="true" signature="1093:1098" ph="..." />
-            <marker date="1541370334102" expanded="true" signature="5117:5166" ph="..." />
-            <marker date="1541370334102" expanded="true" signature="5190:7848" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/defense.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="31" column="96" selection-start-line="31" selection-start-column="96" selection-end-line="31" selection-end-column="96" />
         </state>
       </provider>
     </entry>

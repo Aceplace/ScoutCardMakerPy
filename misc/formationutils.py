@@ -1,5 +1,37 @@
+from enum import Enum
+
+class Direction(Enum):
+    LEFT = 1
+    RIGHT = 2
+    STR = 3
+    WK = 4
+
+class StrengthType(Enum):
+    ATTACHED = 1
+    RECEIVER_STRENGTH = 2
+
 ATTACH_DISTANCE = 6
 GHOST_DISTANCE = 4
+
+def get_align_side(direction, strength_type, formation):
+    if direction == Direction.LEFT or direction == Direction.RIGHT:
+        return direction
+
+    if strength_type == StrengthType.ATTACHED:
+        strength_direction = get_attached_receiver_strength(formation)
+    else:
+        strength_direction = get_receiver_strength(formation)
+
+    if strength_direction == 'LT':
+        if direction == Direction.STR:
+            return Direction.LEFT
+        else:
+            return Direction.RIGHT
+    else:
+        if direction == Direction.STR:
+            return Direction.RIGHT
+        else:
+            return Direction.LEFT
 
 def get_receiver_strength(formation, default_strength='RT'):
     #first check for strength is absolute number of receivers (defined as outside the tackle)
@@ -31,6 +63,7 @@ def get_receiver_strength(formation, default_strength='RT'):
 
     return default_strength
 
+
 def get_attached_receiver_strength(formation, default_strength='RT'):
     attached_receivers_to_left = get_number_of_attached_receivers(formation, 'LT')
     attached_receivers_to_right = get_number_of_attached_receivers(formation, 'RT')
@@ -41,6 +74,7 @@ def get_attached_receiver_strength(formation, default_strength='RT'):
         return 'RT'
 
     return get_receiver_strength(formation, default_strength)
+
 
 def get_number_of_attached_receivers(formation, direction):
     number_of_attached_receivers = 0
@@ -60,12 +94,14 @@ def get_number_of_attached_receivers(formation, direction):
 
     return number_of_attached_receivers
 
+
 def get_number_of_offset_backs(formation, direction):
     number_of_attached_receivers = 0
     if direction == 'LT':
         return len([player for label, player in formation.players.items() if player.x >= formation.lt.x and player.x < 0])
     else:
         return len([player for label, player in formation.players.items() if player.x <= formation.rt.x and player.x > 0])
+
 
 def get_first_attached(formation, direction):
     if direction == 'LT':
@@ -85,6 +121,7 @@ def get_first_attached(formation, direction):
             return player
 
     return None
+
 
 def get_second_attached(formation, direction):
     number_of_attached_receivers = 0
@@ -110,6 +147,7 @@ def get_second_attached(formation, direction):
 
     return None
 
+
 def get_receivers_outside_in(formation, direction):
     if formation.q.x != 0:
         receivers = [player for label, player in formation.players.items() if label in ['T', 'H', 'X', 'Y', 'Z', 'Q']]
@@ -124,7 +162,7 @@ def get_receivers_outside_in(formation, direction):
     return receivers
 
 
-from offense.formation import Formation
+from offensiveformation.formation import Formation
 
 if __name__=='__main__':
     formation = Formation()

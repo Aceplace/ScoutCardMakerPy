@@ -1,5 +1,5 @@
-from offense.formation import Formation
-from offense.formationlibrary import FormationLibrary
+from offensiveformation.formation import Formation
+from offensiveformation.formationlibrary import FormationLibrary
 
 class LibraryEditorController:
     def __init__(self):

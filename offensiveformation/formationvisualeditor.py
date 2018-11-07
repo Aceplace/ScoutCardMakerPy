@@ -1,6 +1,5 @@
 from tkinter import *
-from offense.formation import Formation
-from defense import Defense
+from offensiveformation.formation import Formation
 
 #Constant Values
 CENTER_X_POS = 600
@@ -10,7 +9,6 @@ VERTICAL_COORDINATE_SIZE = 25
 PLAYER_WIDTH = 26
 PLAYER_HEIGHT = 20
 LABEL_FONT = "Times 12"
-DEFENDER_FONT = "Times 18"
 HASH_SIZE = 5
 #Derived Constant Values
 LEFT_SIDELINE = CENTER_X_POS - HORIZONTAL_COORDINATE_SIZE * 53
@@ -27,15 +25,18 @@ FIVE_YARDS = VERTICAL_COORDINATE_SIZE * 5
 def player_coordinates_to_canvas(player_x, player_y):
     return (CENTER_X_POS + player_x * HORIZONTAL_COORDINATE_SIZE, CENTER_Y_POS + player_y * VERTICAL_COORDINATE_SIZE)
 
-def defender_coordinates_to_canvas(defender_x, defender_y):
-    return (CENTER_X_POS + defender_x * HORIZONTAL_COORDINATE_SIZE, CENTER_Y_POS + defender_y * VERTICAL_COORDINATE_SIZE * -1)
+def canvas_coordinates_to_player(player_x, player_y):
+    return (int((player_x - CENTER_X_POS) / HORIZONTAL_COORDINATE_SIZE), int((player_y - CENTER_Y_POS) / VERTICAL_COORDINATE_SIZE))
 
 
-class DefensiveVisualizer(Frame):
+class FormationVisualEditor(Frame):
     def __init__(self, root, controller):
         Frame.__init__(self, root)
+        #self.pack(fill=BOTH, expand=TRUE)
 
         self.controller = controller
+
+        #self.formation_visualizer_frame.pack(fill=BOTH, expand=TRUE)
 
         self.grid_rowconfigure(0, weight=1)
         self.grid_columnconfigure(0, weight=1)
@@ -54,7 +55,14 @@ class DefensiveVisualizer(Frame):
         self.draw_field_lines()
         self.create_player_shapes_for_visualization()
 
-        self.visualize_formation_and_defense(self.controller.current_formation, self.controller.current_defense)
+        #self.pack(fill=BOTH, expand=True)
+
+        self.drag_data = {"x": 0, "y": 0, "item": None}
+        self.canvas.bind("<ButtonPress-1>", self.on_press)
+        self.canvas.bind("<ButtonRelease-1>", self.on_release)
+        self.canvas.bind("<B1-Motion>", self.on_move)
+
+        self.visualize_formation(self.controller.current_formation)
 
 
     def draw_field_lines(self):
@@ -82,34 +90,59 @@ class DefensiveVisualizer(Frame):
             self.player_shapes[label] = {"Oval" : self.canvas.create_oval(x - PLAYER_WIDTH / 2, y - PLAYER_HEIGHT / 2, x + PLAYER_WIDTH / 2, y + PLAYER_HEIGHT / 2, fill="white"),
                                         "Text" : self.canvas.create_text(x, y, text=player.label, font=LABEL_FONT),
                                         "Label" : player.label}
-        defense = Defense() #create default formation to place defenders around in
-        self.defender_shapes = {}
-        for label, defender in defense.defenders.items():
-            x, y = defender_coordinates_to_canvas(*defender.place_defender(formation))
-            self.defender_shapes[label] = {'Text' : self.canvas.create_text(x, y, text=defender.label, font=DEFENDER_FONT),
-                                        'Label' : player.label }
 
-    def visualize_formation_and_defense(self, formation, defense):
+    def visualize_formation(self, formation):
         for label, player in formation.players.items():
             x, y = player_coordinates_to_canvas(player.x, player.y)
             self.canvas.coords(self.player_shapes[label]["Oval"], x - PLAYER_WIDTH / 2, y - PLAYER_HEIGHT / 2, x + PLAYER_WIDTH / 2, y + PLAYER_HEIGHT / 2)
             self.canvas.coords(self.player_shapes[label]["Text"], x, y)
-        for label, defender in defense.defenders.items():
-            x, y = defender_coordinates_to_canvas(*defender.place_defender(formation))
-            self.canvas.coords(self.defender_shapes[label]["Text"], x, y)
 
+    def on_press(self, event): #get initial location of object to be moved
+        x = self.canvas.canvasx(event.x)
+        y = self.canvas.canvasy(event.y)
+        drag_items = self.canvas.find_overlapping(x-1, y-1, x+1, y+1)
+        if drag_items:
+            player_drag_item = self.select_player_to_drag(drag_items)
+            self.drag_data["item"] = player_drag_item
+            self.drag_data["x"] = x
+            self.drag_data["y"] = y
+        else:
+            self.drag_data["item"] = None
+            self.drag_data["x"] = 0
+            self.drag_data["y"] = 0
 
-class MockController:
-    def __init__(self):
-        self.current_formation = Formation()
-        self.current_formation.flip_formation()
-        self.current_formation.y.x = -25
-        self.current_formation.x.x = 12
-        self.current_defense = Defense()
+    def on_release(self, event): #reset data on release
+        self.drag_data["item"] = None
+        self.drag_data["x"] = 0
+        self.drag_data["y"] = 0
 
-if __name__ == '__main__':
-    root = Tk()
-    root.state('zoomed')
-    visualizer = DefensiveVisualizer(root, MockController())
-    visualizer.pack(fill=BOTH, expand=True)
-    root.mainloop()
+    def on_move(self, event):
+        if self.drag_data["item"]:
+            x = self.canvas.canvasx(event.x)
+            y = self.canvas.canvasy(event.y)
+            delta_x = x - self.drag_data["x"]
+            delta_y = y - self.drag_data["y"]
+            # move the object the appropriate amount
+            if abs(delta_x) > HORIZONTAL_COORDINATE_SIZE:
+                move_x = int(delta_x / HORIZONTAL_COORDINATE_SIZE) * HORIZONTAL_COORDINATE_SIZE
+                self.canvas.move(self.drag_data["item"]["Oval"], move_x, 0)
+                self.canvas.move(self.drag_data["item"]["Text"], move_x, 0)
+                self.drag_data["x"] = self.drag_data["x"] + move_x
+                self.controller.update_player_in_formation(self.drag_data["item"]["Label"], *self.visualizer_coordinates_to_formation_coordinates(self.drag_data["item"]["Text"]))
+            if abs(delta_y) > VERTICAL_COORDINATE_SIZE:
+                move_y = int(delta_y / VERTICAL_COORDINATE_SIZE) * VERTICAL_COORDINATE_SIZE
+                self.canvas.move(self.drag_data["item"]["Oval"], 0, move_y)
+                self.canvas.move(self.drag_data["item"]["Text"], 0, move_y)
+                self.drag_data["y"] = self.drag_data["y"] + move_y
+                self.controller.update_player_in_formation(self.drag_data["item"]["Label"], *self.visualizer_coordinates_to_formation_coordinates(self.drag_data["item"]["Text"]))
+
+    def select_player_to_drag(self, drag_items):
+        for drag_item in drag_items:
+            for player in self.player_shapes.values():
+                if drag_item is player["Oval"] or drag_item is player["Text"]:
+                    return player
+        return None
+
+    def visualizer_coordinates_to_formation_coordinates(self, player_text):
+        coordinates = self.canvas.coords(player_text)
+        return canvas_coordinates_to_player(coordinates[0], coordinates[1])

@@ -2,8 +2,8 @@ from tkinter import *
 from tkinter import filedialog
 from tkinter import messagebox
 import os
-from offense.formationlibraryedtior import FormationLibraryEditor
-from offense.libraryeditorcontroller import LibraryEditorController
+from offensiveformation.formationlibraryedtior import FormationLibraryEditor
+from offensiveformation.libraryeditorcontroller import LibraryEditorController
 from misc.scoutcardmakerexceptions import ScoutCardMakerException
 
 class App(Tk):

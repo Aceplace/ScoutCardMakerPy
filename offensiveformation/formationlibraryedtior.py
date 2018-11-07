@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
-from offense.formationvisualeditor import FormationVisualEditor
+from offensiveformation.formationvisualeditor import FormationVisualEditor
 from misc.scoutcardmakerexceptions import *
 
 
@@ -134,8 +134,8 @@ class FormationLibraryEditor(Frame):
 
 
 
-from offense.formationlibrary import FormationLibrary
-from offense.libraryeditorcontroller import LibraryEditorController
+from offensiveformation.formationlibrary import FormationLibrary
+from offensiveformation.libraryeditorcontroller import LibraryEditorController
 
 if __name__ == '__main__':
 

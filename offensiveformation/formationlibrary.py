@@ -1,4 +1,4 @@
-from offense.formation import Formation
+from offensiveformation.formation import Formation
 from misc.scoutcardmakerexceptions import ScoutCardMakerException
 import pickle
 
