@@ -156,8 +156,6 @@ class AlignmentPlacementRuleGUI(Frame):
 
 
 
-
-
 if __name__=='__main__':
     from defensiveformation.defensiveutils import *
     class MockController():

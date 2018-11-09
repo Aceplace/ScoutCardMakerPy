@@ -1,4 +1,5 @@
 from misc.formationutils import *
+from tkinter import *
 
 class OverPlayerOption(Enum):
     NUMBER_ONE = 1
@@ -77,3 +78,89 @@ class OverPlacementRule:
                 x = formation.rg.x + leverage_adjust
 
         return x, y
+
+
+class OverPlacementRuleGUI(Frame):
+    def __init__(self, root, controller):
+        Frame.__init__(self, root)
+        self.controller = controller
+
+        Label(self, text='Over Option:').grid(row=0, column=0, sticky=E)
+        over_option_names = [name for name, member in OverPlayerOption.__members__.items()]
+        self.over_option_value = StringVar()
+        self.over_option_value.set(over_option_names[0])
+        self.over_option_om = OptionMenu(self, self.over_option_value, *over_option_names, command=self.update_defender)
+        self.over_option_om.grid(row=0, column=1, sticky=W+E)
+
+        Label(self, text='Leverage:').grid(row=1, column=0, sticky=E)
+        leverage_names = [name for name, member in Leverage.__members__.items()]
+        self.leverage_value = StringVar()
+        self.leverage_value.set(leverage_names[0])
+        self.leverage_om = OptionMenu(self, self.leverage_value, *leverage_names, command=self.update_defender)
+        self.leverage_om.grid(row=1, column=1, sticky=W + E)
+
+        Label(self, text='Direction:').grid(row=2, column=0, sticky=E)
+        direction_names = [name for name, member in Direction.__members__.items()]
+        self.direction_value = StringVar()
+        self.direction_value.set(direction_names[0])
+        self.direction_om = OptionMenu(self, self.direction_value, *direction_names, command=self.update_defender)
+        self.direction_om.grid(row=2, column=1, sticky=W+E)
+
+        Label(self, text='Strength Type:').grid(row=3, column=0, sticky=E)
+        strength_type_names = [name for name, member in StrengthType.__members__.items()]
+        self.strength_type_value = StringVar()
+        self.strength_type_value.set(strength_type_names[0])
+        self.strength_type_om = OptionMenu(self, self.strength_type_value, *strength_type_names, command=self.update_defender)
+        self.strength_type_om.grid(row=3, column=1, sticky=W+E)
+
+        Label(self, text='Depth:').grid(row=3, column=0, sticky=E)
+        self.depth_sb = Spinbox(self, from_ = 1 , to_ = 15, state='readonly', command=self.update_defender)
+        self.depth_sb.grid(row=3, column=1, sticky=W+E)
+
+        self.update_gui_with_defender_info()
+
+
+    def update_gui_with_defender_info(self):
+        over_placement_rule = self.controller.current_defender.placement_rule
+
+        self.over_option_value.set(over_placement_rule.over_player_option.name)
+        self.leverage_value.set(over_placement_rule.leverage.name)
+        self.direction_value.set(over_placement_rule.direction.name)
+        self.strength_type_value.set(over_placement_rule.strength_type.name)
+        self.depth_sb.configure(state=NORMAL)
+        self.depth_sb.delete(0,END)
+        self.depth_sb.insert(0, over_placement_rule.depth)
+        self.depth_sb.configure(state='readonly')
+
+
+    def update_defender(self, *args):
+        over_player_option = OverPlayerOption[self.over_option_value.get()]
+        leverage = Leverage[self.leverage_value.get()]
+        direction = Direction[self.direction_value.get()]
+        strength_type = StrengthType[self.strength_type_value.get()]
+        depth = int(self.depth_sb.get())
+        print((over_player_option, leverage, direction, strength_type, depth))
+
+        alignment_placement_rule = OverPlacementRule(over_player_option, leverage, direction, strength_type, depth)
+        self.controller.set_defender_placement_rule(alignment_placement_rule)
+
+
+
+
+
+if __name__=='__main__':
+    from defensiveformation.defensiveutils import *
+    class MockController():
+        def __init__(self):
+            self.defense = get_default_defense()
+            self.current_defender = self.defense.c
+
+        def set_defender_placement_rule(self, placement_rule):
+            self.current_defender = self.current_defender.placement_rule = placement_rule
+
+
+    root = Tk()
+    controller = MockController()
+    gui = OverPlacementRuleGUI(root, controller)
+    gui.pack()
+    root.mainloop()

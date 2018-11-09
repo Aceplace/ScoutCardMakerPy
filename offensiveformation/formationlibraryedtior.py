@@ -134,10 +134,11 @@ class FormationLibraryEditor(Frame):
 
 
 
-from offensiveformation.formationlibrary import FormationLibrary
-from offensiveformation.libraryeditorcontroller import LibraryEditorController
+
 
 if __name__ == '__main__':
+    from offensiveformation.formationlibrary import FormationLibrary
+    from offensiveformation.formationlibraryeditorcontroller import LibraryEditorController
 
     root = Tk()
     library = FormationLibrary()
