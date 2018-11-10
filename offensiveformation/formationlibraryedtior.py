@@ -29,7 +29,7 @@ class FormationLibraryEditor(Frame):
         formation_entry_frame.grid(row=0, column=0)
 
         override_checkboxes_frame = Frame(self)
-        Label(override_checkboxes_frame, text='Affected Formations').pack(anchor=W)
+        Label(override_checkboxes_frame, text='Affected Players').pack(anchor=W)
         self.t_cb_value = BooleanVar()
         self.t_cb = Checkbutton(override_checkboxes_frame, text='T', variable=self.t_cb_value)
         self.t_cb.pack(anchor=W)

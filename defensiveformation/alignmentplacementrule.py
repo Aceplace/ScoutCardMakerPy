@@ -19,7 +19,8 @@ class Alignment(Enum):
     NINE = 14
 
 class AlignmentPlacementRule():
-    def __init__(self, alignment, direction, strength_type, depth=1):
+    def __init__(self, alignment = Alignment.THREE, direction = Direction.STR,
+                 strength_type = StrengthType.ATTACHED, depth=1):
         self.alignment = alignment
         self.direction = direction
         self.strength_type = strength_type
@@ -147,7 +148,6 @@ class AlignmentPlacementRuleGUI(Frame):
         direction = Direction[self.direction_value.get()]
         strength_type = StrengthType[self.strength_type_value.get()]
         depth = int(self.depth_sb.get())
-        print((alignment, direction, strength_type, depth))
 
         alignment_placement_rule = AlignmentPlacementRule(alignment, direction, strength_type, depth)
         self.controller.set_defender_placement_rule(alignment_placement_rule)

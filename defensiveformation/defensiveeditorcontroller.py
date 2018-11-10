@@ -14,7 +14,12 @@ class DefensiveEditorController:
 
         self.placement_type_dict = {
                         'Alignment': (AlignmentPlacementRule, AlignmentPlacementRuleGUI),
-                        'Over': (OverPlacementRule, OverPlacementRule)
+                        'Over': (OverPlacementRule, OverPlacementRuleGUI)
+                        }
+
+        self.placement_type_gui_dict = {
+                        AlignmentPlacementRule: AlignmentPlacementRuleGUI,
+                        OverPlacementRule: OverPlacementRuleGUI
                         }
 
     def get_defender_names(self):
@@ -29,3 +34,18 @@ class DefensiveEditorController:
         for label, (placement_type_class, gui_class) in self.placement_type_dict.items():
             if type(placement_rule) == placement_type_class:
                 return label
+
+    def set_current_defender(self, label):
+        self.current_defender = self.current_defense.defenders[label]
+
+    def change_placement_rule(self, placement_rule_name):
+        self.current_defender.placement_rule = self.placement_type_dict[placement_rule_name][0]()
+
+    def set_defender_placement_rule(self, placement_rule):
+        self.current_defender.placement_rule = placement_rule
+        if hasattr(self, 'view'):
+            self.view.update_view()
+
+    def get_placement_rule_gui(self, root):
+        return self.placement_type_gui_dict[type(self.current_defender.placement_rule)](root, self)
+

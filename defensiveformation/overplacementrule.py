@@ -23,7 +23,9 @@ class Leverage(Enum):
     OUTSIDE = 3
 
 class OverPlacementRule:
-    def __init__(self, over_player_option, leverage, direction, strength_type, depth=5):
+    def __init__(self, over_player_option = OverPlayerOption.NUMBER_ONE,
+                 leverage = Leverage.HEAD_UP, direction = Direction.STR,
+                 strength_type = StrengthType.RECEIVER_STRENGTH, depth=5):
         self.over_player_option = over_player_option
         self.leverage = leverage
         self.direction = direction
@@ -139,7 +141,6 @@ class OverPlacementRuleGUI(Frame):
         direction = Direction[self.direction_value.get()]
         strength_type = StrengthType[self.strength_type_value.get()]
         depth = int(self.depth_sb.get())
-        print((over_player_option, leverage, direction, strength_type, depth))
 
         alignment_placement_rule = OverPlacementRule(over_player_option, leverage, direction, strength_type, depth)
         self.controller.set_defender_placement_rule(alignment_placement_rule)

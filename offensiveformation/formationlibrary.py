@@ -83,7 +83,7 @@ class FormationLibrary:
 
 
     def get_composite_formation(self, formation_name):
-        formation_words = formation_words = formation_name.strip().upper().split()
+        formation_words = formation_name.strip().upper().split()
 
         #determine if going lt or rt
         direction = None
