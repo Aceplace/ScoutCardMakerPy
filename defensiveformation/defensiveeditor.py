@@ -15,6 +15,7 @@ class DefensiveEditor(Frame):
         self.grid_columnconfigure(3, weight=1)
 
         offensive_formation_frame = Frame(self)
+        Label(offensive_formation_frame, text='Offensive Formation:').pack()
         self.offensive_formation_entry = Entry(offensive_formation_frame)
         self.offensive_formation_entry.pack()
         self.get_offensive_formation_btn = Button(offensive_formation_frame, text='Get Offensive Formation', command=self.get_offensive_formation)
