@@ -1,5 +1,9 @@
 from tkinter import *
+from tkinter import messagebox
+
 from defensiveformation.defensivevisualizer import DefensiveVisualizer
+from misc.scoutcardmakerexceptions import ScoutCardMakerException
+
 
 class DefensiveEditor(Frame):
     def __init__(self, root, controller):
@@ -8,7 +12,14 @@ class DefensiveEditor(Frame):
         controller.view = self
 
         self.grid_rowconfigure(1, weight=1)
-        self.grid_columnconfigure(2, weight=1)
+        self.grid_columnconfigure(3, weight=1)
+
+        offensive_formation_frame = Frame(self)
+        self.offensive_formation_entry = Entry(offensive_formation_frame)
+        self.offensive_formation_entry.pack()
+        self.get_offensive_formation_btn = Button(offensive_formation_frame, text='Get Offensive Formation', command=self.get_offensive_formation)
+        self.get_offensive_formation_btn.pack()
+        offensive_formation_frame.grid(row=0, column=0, stick=W)
 
         affected_defenders_frame = Frame(self)
         Label(affected_defenders_frame, text='Affected Defenders').grid(row = 0, column = 0)
@@ -45,12 +56,12 @@ class DefensiveEditor(Frame):
         self.q_cb_value = BooleanVar()
         self.q_cb = Checkbutton(affected_defenders_frame, text='Q', variable=self.q_cb_value)
         self.q_cb.grid(row=5, column=1, sticky=W)
-
-        affected_defenders_frame.grid(row=0, column=0, stick=W)
+        self.set_affected_defender_checkboxes()
+        affected_defenders_frame.grid(row=0, column=1, stick=W)
 
 
         defender_frame = Frame(self)
-        defender_frame.grid(row=0, column=1, stick=E)
+        defender_frame.grid(row=0, column=2, stick=E)
 
         Label(defender_frame, text='Current Defender :').grid(row=0, column=0, sticky=E)
         defender_names = self.controller.get_defender_names()
@@ -68,7 +79,7 @@ class DefensiveEditor(Frame):
 
 
         self.defensive_visualizer = DefensiveVisualizer(self, controller)
-        self.defensive_visualizer.grid(row = 1, column = 0, columnspan = 3, sticky=W+E+S+N)
+        self.defensive_visualizer.grid(row = 1, column = 0, columnspan = 4, sticky=W+E+S+N)
 
 
         self.placement_rule_frame = None
@@ -77,6 +88,7 @@ class DefensiveEditor(Frame):
 
     def change_defender(self, *args):
         self.controller.set_current_defender(self.current_defender_value.get())
+        self.placement_rule_name_value.set(self.controller.get_current_defender_placement_rule_name())
         self.change_placement_rule_gui()
 
     def change_placement_rule(self, *args):
@@ -89,18 +101,40 @@ class DefensiveEditor(Frame):
             self.placement_rule_frame.destroy()
 
         self.placement_rule_frame = self.controller.get_placement_rule_gui(self)
-        self.placement_rule_frame.grid(row = 0, column = 2, sticky = W)
+        self.placement_rule_frame.grid(row = 0, column = 3, sticky = W)
         self.update_view()
 
     def update_view(self):
         self.defensive_visualizer.visualize_formation_and_defense(self.controller.current_formation,
                                                                   self.controller.current_defense)
 
+    def set_affected_defender_checkboxes(self):
+        self.t_cb_value.set(True if 'T' in self.controller.current_defense.affected_defender_tags else False)
+        self.n_cb_value.set(True if 'N' in self.controller.current_defense.affected_defender_tags else False)
+        self.a_cb_value.set(True if 'A' in self.controller.current_defense.affected_defender_tags else False)
+        self.p_cb_value.set(True if 'P' in self.controller.current_defense.affected_defender_tags else False)
+        self.w_cb_value.set(True if 'W' in self.controller.current_defense.affected_defender_tags else False)
+        self.m_cb_value.set(True if 'M' in self.controller.current_defense.affected_defender_tags else False)
+        self.b_cb_value.set(True if 'B' in self.controller.current_defense.affected_defender_tags else False)
+        self.s_cb_value.set(True if 'S' in self.controller.current_defense.affected_defender_tags else False)
+        self.c_cb_value.set(True if 'C' in self.controller.current_defense.affected_defender_tags else False)
+        self.f_cb_value.set(True if 'F' in self.controller.current_defense.affected_defender_tags else False)
+        self.q_cb_value.set(True if 'Q' in self.controller.current_defense.affected_defender_tags else False)
+
+    def get_offensive_formation(self):
+        try:
+            self.controller.load_offensive_formation(self.offensive_formation_entry.get())
+            self.update_view()
+        except ScoutCardMakerException as e:
+            messagebox.showerror('Load Formation Error', e)
+
 
 if __name__ == '__main__':
     from defensiveformation.defensiveeditorcontroller import DefensiveEditorController
     root = Tk()
     controller = DefensiveEditorController()
+    controller.current_formation_library.load_library('library1.scmfl')
     DefensiveEditor(root, controller).pack(fill=BOTH, expand=TRUE)
+    root.state('zoomed')
     root.mainloop()
 

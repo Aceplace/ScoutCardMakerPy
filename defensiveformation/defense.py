@@ -33,7 +33,7 @@ class Defense:
         self.defenders['F'] = self.f
         self.defenders['C'] = self.c
         self.defenders['Q'] = self.q
-        self.affected_defender_tags = []
+        self.affected_defender_tags = ['T','C']
 
     def copy_defense_from_defense(self, copy_defense):
         for tag, defender in copy_defense.defenders.items():
@@ -44,4 +44,4 @@ class Defense:
 
     def override_formation(self, override_defense):
         for tag in override_defense.affected_defender_tags:
-            self.defenders[tag].placement_rule = override_defense.players[tag].placement_rule
+            self.defenders[tag].placement_rule = override_defense.defenders[tag].placement_rule

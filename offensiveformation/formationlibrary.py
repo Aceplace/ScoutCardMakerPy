@@ -77,12 +77,18 @@ class FormationLibrary:
         self.formations = pickle.load(file_object)
 
     def get_formation(self, formation_name):
+        if not self.formations:
+            raise ScoutCardMakerException('Formation Library Empty')
+
         formation = Formation()
         formation.copy_formation_from_formation(self.formations[formation_name])
         return formation
 
 
     def get_composite_formation(self, formation_name):
+        if not self.formations:
+            raise ScoutCardMakerException('Formation Library Empty')
+
         formation_words = formation_name.strip().upper().split()
 
         #determine if going lt or rt
