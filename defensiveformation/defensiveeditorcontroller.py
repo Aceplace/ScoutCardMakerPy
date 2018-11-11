@@ -1,3 +1,4 @@
+from defensiveformation.defensivelibrary import DefensiveLibrary
 from defensiveformation.defensiveutils import *
 from offensiveformation.formation import Formation
 
@@ -12,8 +13,9 @@ class DefensiveEditorController:
     def __init__(self):
         self.current_defense = get_default_defense()
         self.current_formation = Formation()
-        self.current_formation_library = FormationLibrary()
+        self.formation_library = FormationLibrary()
         self.current_defender = self.current_defense.c
+        self.defense_library = DefensiveLibrary()
 
         self.placement_type_dict = {
                         'Alignment': (AlignmentPlacementRule, AlignmentPlacementRuleGUI),
@@ -62,6 +64,25 @@ class DefensiveEditorController:
 
 
     def load_offensive_formation(self, formation_name):
-        self.current_formation = self.current_formation_library.get_composite_formation(formation_name)
+        self.current_formation = self.formation_library.get_composite_formation(formation_name)
+
+    def save_defense_to_library(self, defense_name, affected_defender_tags):
+        self.current_defense.affected_defender_tags = affected_defender_tags
+        self.defense_library.add_defense_to_library(defense_name, self.current_defense)
+
+    def load_composite_defense_from_library(self, defense_name):
+        defense = self.defense_library.get_composite_defense(defense_name)
+        self.current_defense.copy_defense_from_defense(defense)
+
+    def delete_defense_from_library(self, defense_name):
+        self.defense_library.delete_defense_from_library(defense_name)
+
+    def load_defense_from_library(self, defense_name):
+        defense = self.defense_library.get_defense(defense_name)
+        self.current_defense.copy_defense_from_defense(defense)
+
+    def load_defense_library(self, file_name):
+        self.defense_library.load_library(file_name)
+
 
 

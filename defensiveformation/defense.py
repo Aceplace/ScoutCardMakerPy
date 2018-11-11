@@ -42,6 +42,6 @@ class Defense:
         for tag in copy_defense.affected_defender_tags:
             self.affected_defender_tags.append(tag)
 
-    def override_formation(self, override_defense):
+    def override_defense(self, override_defense):
         for tag in override_defense.affected_defender_tags:
             self.defenders[tag].placement_rule = override_defense.defenders[tag].placement_rule

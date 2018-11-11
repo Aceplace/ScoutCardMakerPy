@@ -109,6 +109,32 @@ class DefensiveEditor(Frame):
         self.defensive_visualizer.visualize_formation_and_defense(self.controller.current_formation,
                                                                   self.controller.current_defense)
 
+    def get_affected_defenders(self):
+        affected_defender_tags = []
+        if self.t_cb_value.get():
+            affected_defender_tags.append('T')
+        if self.n_cb_value.get():
+            affected_defender_tags.append('N')
+        if self.a_cb_value.get():
+            affected_defender_tags.append('A')
+        if self.p_cb_value.get():
+            affected_defender_tags.append('P')
+        if self.w_cb_value.get():
+            affected_defender_tags.append('W')
+        if self.m_cb_value.get():
+            affected_defender_tags.append('M')
+        if self.b_cb_value.get():
+            affected_defender_tags.append('B')
+        if self.s_cb_value.get():
+            affected_defender_tags.append('S')
+        if self.c_cb_value.get():
+            affected_defender_tags.append('C')
+        if self.f_cb_value.get():
+            affected_defender_tags.append('F')
+        if self.q_cb_value.get():
+            affected_defender_tags.append('Q')
+        return affected_defender_tags
+
     def set_affected_defender_checkboxes(self):
         self.t_cb_value.set(True if 'T' in self.controller.current_defense.affected_defender_tags else False)
         self.n_cb_value.set(True if 'N' in self.controller.current_defense.affected_defender_tags else False)
@@ -134,7 +160,7 @@ if __name__ == '__main__':
     from defensiveformation.defensiveeditorcontroller import DefensiveEditorController
     root = Tk()
     controller = DefensiveEditorController()
-    controller.current_formation_library.load_library('library1.scmfl')
+    controller.formation_library.load_library('library1.scmfl')
     DefensiveEditor(root, controller).pack(fill=BOTH, expand=TRUE)
     root.state('zoomed')
     root.mainloop()

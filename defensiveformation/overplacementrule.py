@@ -40,7 +40,7 @@ class OverPlacementRule:
         if self.leverage == Leverage.INSIDE:
             leverage_adjust = 1 if align_side == Direction.LEFT else -1
         elif self.leverage == Leverage.OUTSIDE:
-            leverage_adjust = 1 if align_side == Direction.RIGHT else 1
+            leverage_adjust = 1 if align_side == Direction.RIGHT else -1
         else:
             leverage_adjust = 0
 

@@ -7,7 +7,7 @@ class DefensiveLibrary:
     def __init__(self):
         self.defenses = {}
 
-    def add_formation_to_library(self, defense_name, defense):
+    def add_defense_to_library(self, defense_name, defense):
         if len(defense_name.strip().split()) != 1:
             raise ScoutCardMakerException("Defensive name must be one word.")
         defense_name_upper = defense_name.strip().upper()
@@ -18,20 +18,20 @@ class DefensiveLibrary:
 
         self.defenses[defense_name_upper] = defense_to_save
 
-    def delete_formation_from_library(self, defense_to_delete):
+    def delete_defense_from_library(self, defense_to_delete):
         try:
-            del self.formations[defense_to_delete]
+            del self.defenses[defense_to_delete]
         except KeyError:
-            raise ScoutCardMakerException(f'{formation_to_delete} not in defenses.')
+            raise ScoutCardMakerException(f'{defense_to_delete} not in defenses.')
 
     def save_library(self, filename):
         file_object = open(filename, 'wb')
-        pickle.dump(self.formations, file_object)
+        pickle.dump(self.defenses, file_object)
         file_object.close()
 
     def load_library(self, filename):
         file_object = open(filename, 'rb')
-        self.formations = pickle.load(file_object)
+        self.defenses = pickle.load(file_object)
 
     def get_defense(self, defense_name):
         defense = get_default_defense()

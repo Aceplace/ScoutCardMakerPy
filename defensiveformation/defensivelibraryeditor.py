@@ -1,5 +1,9 @@
 from tkinter import *
+from tkinter import messagebox
+
 from defensiveformation.defensiveeditor import DefensiveEditor
+from misc.scoutcardmakerexceptions import ScoutCardMakerException
+
 
 class DefensiveLibraryEditor(Frame):
     def __init__(self, root, controller):
@@ -40,35 +44,62 @@ class DefensiveLibraryEditor(Frame):
         self.defense_editor.pack(fill=BOTH, expand=True)
         defense_editor_frame.grid(row=0, column=1, rowspan=2, sticky=N+S+E+W)
 
+        self.refresh_library_listbox()
+
 
     def save_defense(self):
-        pass
+        try:
+            affected_defender_tags = self.defense_editor.get_affected_defenders()
+
+            self.controller.save_defense_to_library(self.defense_name_entry.get(), affected_defender_tags)
+            self.refresh_library_listbox()
+
+        except ScoutCardMakerException as e:
+            messagebox.showerror('Save Defense Error', e)
 
     def load_composite_defense(self):
-        pass
+        try:
+            self.controller.load_composite_defense_from_library(self.composite_defense_entry.get())
+            self.defense_editor.update_view()
+        except ScoutCardMakerException as e:
+            messagebox.showerror('Load Composite Defense Error', e)
 
     def delete_selected_defense(self):
-        pass
+        if self.defense_library_lb.curselection():
+            try:
+                index = self.defense_library_lb.curselection()[0]
+                self.controller.delete_defense_from_library(self.defense_library_lb.get(index))
+                self.refresh_library_listbox()
+            except ScoutCardMakerException as e:
+                messagebox.showerror('Delete Defense Error', e)
+
+    def refresh_library_listbox(self):
+        defenses = self.controller.defense_library.get_sorted_defense_names()
+        self.defense_library_lb.delete(0, END)
+        for defense in defenses:
+            self.defense_library_lb.insert(END, defense)
 
     def defense_library_on_select(self, event):
         listbox = event.widget
-        #if listbox.curselection():
-        #    index = listbox.curselection()[0]
-        #    self.controller.load_formation_from_library(listbox.get(index))
-        #    self.t_cb_value.set(True if 'T' in self.controller.current_formation.affected_player_tags else False)
-        #    self.h_cb_value.set(True if 'H' in self.controller.current_formation.affected_player_tags else False)
-        #    self.x_cb_value.set(True if 'X' in self.controller.current_formation.affected_player_tags else False)
-        #    self.y_cb_value.set(True if 'Y' in self.controller.current_formation.affected_player_tags else False)
-        #    self.z_cb_value.set(True if 'Z' in self.controller.current_formation.affected_player_tags else False)
-        #    self.q_cb_value.set(True if 'Q' in self.controller.current_formation.affected_player_tags else False)
-        #    self.formation_visual_editor.visualize_formation(self.controller.current_formation)
+        if listbox.curselection():
+            index = listbox.curselection()[0]
+            self.controller.load_defense_from_library(listbox.get(index))
+            self.defense_editor.set_affected_defender_checkboxes()
+            self.defense_editor.change_defender() #this forces the editor to update the placement rule gui
+            self.defense_editor.update_view()
 
 
 if __name__ == '__main__':
+    def on_close(root, controller):
+        controller.defense_library.save_library('defenselibrary1.scmdl')
+        root.destroy()
+
     from defensiveformation.defensiveeditorcontroller import DefensiveEditorController
     root = Tk()
     controller = DefensiveEditorController()
-    controller.current_formation_library.load_library('library1.scmfl')
+    controller.formation_library.load_library('library1.scmfl')
+    controller.defense_library.load_library('defenselibrary1.scmdl')
     DefensiveLibraryEditor(root, controller).pack(fill=BOTH, expand=TRUE)
     root.state('zoomed')
+    root.protocol('WM_DELETE_WINDOW', lambda: on_close(root, controller))
     root.mainloop()
