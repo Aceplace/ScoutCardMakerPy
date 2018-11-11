@@ -51,6 +51,11 @@ class DefensiveEditorController:
     def change_placement_rule(self, placement_rule_name):
         self.current_defender.placement_rule = self.placement_type_dict[placement_rule_name][0]()
 
+    def checked_affected_defenders_box(self, affected_defender_tags):
+        self.current_defense.affected_defender_tags = affected_defender_tags
+        if hasattr(self, 'view'):
+            self.view.update_view()
+
     def set_defender_placement_rule(self, placement_rule):
         self.current_defender.placement_rule = placement_rule
         if hasattr(self, 'view'):
@@ -83,6 +88,7 @@ class DefensiveEditorController:
 
     def load_defense_library(self, file_name):
         self.defense_library.load_library(file_name)
+
 
 
 

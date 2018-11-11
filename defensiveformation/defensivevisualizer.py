@@ -88,6 +88,7 @@ class DefensiveVisualizer(Frame):
             x, y = defender_coordinates_to_canvas(*defender.place_defender(formation))
             self.defender_shapes[label] = {'Text' : self.canvas.create_text(x, y, text=defender.label, font=DEFENDER_FONT),
                                         'Label' : player.label }
+            self.defender_shapes[label]['Text']
 
     def visualize_formation_and_defense(self, formation, defense):
         for label, player in formation.players.items():
@@ -97,6 +98,7 @@ class DefensiveVisualizer(Frame):
         for label, defender in defense.defenders.items():
             x, y = defender_coordinates_to_canvas(*defender.place_defender(formation))
             self.canvas.coords(self.defender_shapes[label]["Text"], x, y)
+            self.canvas.itemconfigure(self.defender_shapes[label]["Text"], state=NORMAL if label in defense.affected_defender_tags else HIDDEN)
 
 
 
