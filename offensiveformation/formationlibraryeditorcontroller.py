@@ -1,7 +1,7 @@
 from offensiveformation.formation import Formation
 from offensiveformation.formationlibrary import FormationLibrary
 
-class LibraryEditorController:
+class FormationLibraryEditorController:
     def __init__(self):
         self.current_formation = Formation()
         self.formation_library = FormationLibrary()

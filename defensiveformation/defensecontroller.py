@@ -9,13 +9,14 @@ from misc.scoutcardmakerexceptions import ScoutCardMakerException
 from offensiveformation.formationlibrary import FormationLibrary
 
 
-class DefensiveEditorController:
+class DefenseController:
     def __init__(self):
         self.current_defense = get_default_defense()
         self.current_formation = Formation()
         self.formation_library = FormationLibrary()
         self.current_defender = self.current_defense.c
         self.defense_library = DefensiveLibrary()
+        self.editor = None
 
         self.placement_type_dict = {
                         'Alignment': (AlignmentPlacementRule, AlignmentPlacementRuleGUI),
@@ -86,8 +87,24 @@ class DefensiveEditorController:
         defense = self.defense_library.get_defense(defense_name)
         self.current_defense.copy_defense_from_defense(defense)
 
+    def load_formation_library(self, file_name):
+        self.formation_library.load_library(file_name)
+
+    def set_formation_library(self, formation_library):
+        self.formation_library = formation_library
+
     def load_defense_library(self, file_name):
         self.defense_library.load_library(file_name)
+        if self.editor:
+            self.editor.refresh_library()
+
+    def new_defense_library(self):
+        self.defense_library = DefensiveLibrary()
+        if self.editor:
+            self.editor.refresh_library()
+
+    def save_defense_library(self, library_filename):
+        self.defense_library.save_library(library_filename)
 
 
 

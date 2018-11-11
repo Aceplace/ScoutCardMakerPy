@@ -160,9 +160,9 @@ class DefensiveEditor(Frame):
 
 
 if __name__ == '__main__':
-    from defensiveformation.defensiveeditorcontroller import DefensiveEditorController
+    from defensiveformation.defensecontroller import DefenseController
     root = Tk()
-    controller = DefensiveEditorController()
+    controller = DefenseController()
     controller.formation_library.load_library('library1.scmfl')
     DefensiveEditor(root, controller).pack(fill=BOTH, expand=TRUE)
     root.state('zoomed')

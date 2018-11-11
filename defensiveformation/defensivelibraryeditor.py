@@ -10,6 +10,7 @@ class DefensiveLibraryEditor(Frame):
         Frame.__init__(self, root)
 
         self.controller = controller
+        self.controller.editor = self
 
         self.grid_columnconfigure(1, weight=1)
         self.grid_rowconfigure(1, weight=1)
@@ -94,9 +95,9 @@ if __name__ == '__main__':
         controller.defense_library.save_library('defenselibrary1.scmdl')
         root.destroy()
 
-    from defensiveformation.defensiveeditorcontroller import DefensiveEditorController
+    from defensiveformation.defensecontroller import DefenseController
     root = Tk()
-    controller = DefensiveEditorController()
+    controller = DefenseController()
     controller.formation_library.load_library('library1.scmfl')
     controller.defense_library.load_library('defenselibrary1.scmdl')
     DefensiveLibraryEditor(root, controller).pack(fill=BOTH, expand=TRUE)
