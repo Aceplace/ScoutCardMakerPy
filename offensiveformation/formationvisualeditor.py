@@ -139,7 +139,7 @@ class FormationVisualEditor(Frame):
     def select_player_to_drag(self, drag_items):
         for drag_item in drag_items:
             for player in self.player_shapes.values():
-                if drag_item is player["Oval"] or drag_item is player["Text"]:
+                if (drag_item is player["Oval"] or drag_item is player["Text"]) and player['Label'] not in ['LT', 'LG', 'C', 'RG', 'RT']:
                     return player
         return None
 
