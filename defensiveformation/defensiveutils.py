@@ -1,6 +1,6 @@
 from defensiveformation.defense import Defense
-from defensiveformation.alignmentplacementrule import *
-from defensiveformation.overplacementrule import *
+from defensiveformation.placementrules.alignmentplacementrule import *
+from defensiveformation.placementrules.overplacementrule import *
 
 def get_default_defense():
     defense = Defense()

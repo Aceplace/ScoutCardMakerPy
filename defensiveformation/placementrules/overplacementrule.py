@@ -149,19 +149,3 @@ class OverPlacementRuleGUI(Frame):
 
 
 
-if __name__=='__main__':
-    from defensiveformation.defensiveutils import *
-    class MockController():
-        def __init__(self):
-            self.defense = get_default_defense()
-            self.current_defender = self.defense.c
-
-        def set_defender_placement_rule(self, placement_rule):
-            self.current_defender = self.current_defender.placement_rule = placement_rule
-
-
-    root = Tk()
-    controller = MockController()
-    gui = OverPlacementRuleGUI(root, controller)
-    gui.pack()
-    root.mainloop()

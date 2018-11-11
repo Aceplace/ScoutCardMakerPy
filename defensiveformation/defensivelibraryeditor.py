@@ -45,7 +45,7 @@ class DefensiveLibraryEditor(Frame):
         self.defense_editor.pack(fill=BOTH, expand=True)
         defense_editor_frame.grid(row=0, column=1, rowspan=2, sticky=N+S+E+W)
 
-        self.refresh_library_listbox()
+        self.refresh_library()
 
 
     def save_defense(self):
@@ -53,7 +53,7 @@ class DefensiveLibraryEditor(Frame):
             affected_defender_tags = self.defense_editor.get_affected_defenders()
 
             self.controller.save_defense_to_library(self.defense_name_entry.get(), affected_defender_tags)
-            self.refresh_library_listbox()
+            self.refresh_library()
 
         except ScoutCardMakerException as e:
             messagebox.showerror('Save Defense Error', e)
@@ -70,11 +70,11 @@ class DefensiveLibraryEditor(Frame):
             try:
                 index = self.defense_library_lb.curselection()[0]
                 self.controller.delete_defense_from_library(self.defense_library_lb.get(index))
-                self.refresh_library_listbox()
+                self.refresh_library()
             except ScoutCardMakerException as e:
                 messagebox.showerror('Delete Defense Error', e)
 
-    def refresh_library_listbox(self):
+    def refresh_library(self):
         defenses = self.controller.defense_library.get_sorted_defense_names()
         self.defense_library_lb.delete(0, END)
         for defense in defenses:
@@ -90,17 +90,3 @@ class DefensiveLibraryEditor(Frame):
             self.defense_editor.update_view()
 
 
-if __name__ == '__main__':
-    def on_close(root, controller):
-        controller.defense_library.save_library('defenselibrary1.scmdl')
-        root.destroy()
-
-    from defensiveformation.defensecontroller import DefenseController
-    root = Tk()
-    controller = DefenseController()
-    controller.formation_library.load_library('library1.scmfl')
-    controller.defense_library.load_library('defenselibrary1.scmdl')
-    DefensiveLibraryEditor(root, controller).pack(fill=BOTH, expand=TRUE)
-    root.state('zoomed')
-    root.protocol('WM_DELETE_WINDOW', lambda: on_close(root, controller))
-    root.mainloop()

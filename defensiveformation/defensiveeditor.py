@@ -159,12 +159,5 @@ class DefensiveEditor(Frame):
         self.controller.checked_affected_defenders_box(self.get_affected_defenders())
 
 
-if __name__ == '__main__':
-    from defensiveformation.defensecontroller import DefenseController
-    root = Tk()
-    controller = DefenseController()
-    controller.formation_library.load_library('library1.scmfl')
-    DefensiveEditor(root, controller).pack(fill=BOTH, expand=TRUE)
-    root.state('zoomed')
-    root.mainloop()
+
 

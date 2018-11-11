@@ -103,18 +103,3 @@ class DefensiveVisualizer(Frame):
 
 
 
-if __name__ == '__main__':
-    from defensiveformation.defensiveutils import *
-    class MockController:
-        def __init__(self):
-            self.current_formation = Formation()
-            self.current_formation.flip_formation()
-            self.current_formation.y.x = -25
-            self.current_formation.x.x = 12
-            self.current_defense = get_default_defense()
-
-    root = Tk()
-    root.state('zoomed')
-    visualizer = DefensiveVisualizer(root, MockController())
-    visualizer.pack(fill=BOTH, expand=True)
-    root.mainloop()

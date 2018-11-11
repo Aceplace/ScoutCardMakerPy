@@ -162,11 +162,3 @@ def get_receivers_outside_in(formation, direction):
     return receivers
 
 
-from offensiveformation.formation import Formation
-
-if __name__=='__main__':
-    formation = Formation()
-    formation.h.x = -26
-    formation.y.x = 12
-    formation.t.x = -4
-    print(get_attached_receiver_strength(formation))

@@ -2,11 +2,9 @@ from defensiveformation.defensivelibrary import DefensiveLibrary
 from defensiveformation.defensiveutils import *
 from offensiveformation.formation import Formation
 
-from defensiveformation.overplacementrule import *
-from defensiveformation.alignmentplacementrule import *
-
-from misc.scoutcardmakerexceptions import ScoutCardMakerException
 from offensiveformation.formationlibrary import FormationLibrary
+
+from defensiveformation.placementrules.placementruleutils import *
 
 
 class DefenseController:
@@ -18,31 +16,17 @@ class DefenseController:
         self.defense_library = DefensiveLibrary()
         self.editor = None
 
-        self.placement_type_dict = {
-                        'Alignment': (AlignmentPlacementRule, AlignmentPlacementRuleGUI),
-                        'Over': (OverPlacementRule, OverPlacementRuleGUI)
-                        }
-
-        self.placement_type_gui_dict = {
-                        AlignmentPlacementRule: AlignmentPlacementRuleGUI,
-                        OverPlacementRule: OverPlacementRuleGUI
-                        }
-
-        self.placement_type_name_dict = {
-                        AlignmentPlacementRule: 'Alignment',
-                        OverPlacementRule: 'Over'
-                        }
 
     def get_defender_names(self):
         defenders = [label for label, defender in self.current_defense.defenders.items()]
         return defenders
 
     def get_placement_names(self):
-        placement_rule_names = [label for label, rule_gui in self.placement_type_dict.items()]
+        placement_rule_names = [label for label, rule_gui in placement_type_dict.items()]
         return placement_rule_names
 
     def get_placement_rule_name_from_placement_rule(self, placement_rule):
-        for label, (placement_type_class, gui_class) in self.placement_type_dict.items():
+        for label, placement_type_class in placement_type_dict.items():
             if type(placement_rule) == placement_type_class:
                 return label
 
@@ -50,7 +34,7 @@ class DefenseController:
         self.current_defender = self.current_defense.defenders[label]
 
     def change_placement_rule(self, placement_rule_name):
-        self.current_defender.placement_rule = self.placement_type_dict[placement_rule_name][0]()
+        self.current_defender.placement_rule = placement_type_dict[placement_rule_name]()
 
     def checked_affected_defenders_box(self, affected_defender_tags):
         self.current_defense.affected_defender_tags = affected_defender_tags
@@ -63,10 +47,10 @@ class DefenseController:
             self.view.update_view()
 
     def get_placement_rule_gui(self, root):
-        return self.placement_type_gui_dict[type(self.current_defender.placement_rule)](root, self)
+        return placement_type_gui_dict[type(self.current_defender.placement_rule)](root, self)
 
     def get_current_defender_placement_rule_name(self):
-        return self.placement_type_name_dict[type(self.current_defender.placement_rule)]
+        return placement_type_name_dict[type(self.current_defender.placement_rule)]
 
 
     def load_offensive_formation(self, formation_name):

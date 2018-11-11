@@ -77,26 +77,5 @@ def add_formation_to_slide(formation, slide):
 
 
 
-formations = [Formation(), Formation()]
-formations[1].flip_formation()
 
 
-play1 = {
-    "Number":"1",
-    "Hash":"L",
-    "FormationName":"Blah",
-    "Play":"Kah",
-    "Formation":formations[0]
-}
-
-play2 = {
-    "Number":"2",
-    "Hash":"C",
-    "FormationName":"Blsah",
-    "Play":"Ksah",
-    "Formation":formations[1]
-}
-
-plays = [play1, play2]
-
-export_to_powerpoint("output.pptx", plays)

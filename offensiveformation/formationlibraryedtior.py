@@ -136,19 +136,3 @@ class FormationLibraryEditor(Frame):
 
 
 
-if __name__ == '__main__':
-    from offensiveformation.formationlibrary import FormationLibrary
-    from offensiveformation.formationlibraryeditorcontroller import FormationLibraryEditorController
-
-    root = Tk()
-    library = FormationLibrary()
-    library.load_library('formations.scmfl')
-
-    formations = sorted([formation_name for formation_name in library.formations.keys() ])
-
-    libraryeditor = FormationLibraryEditor(root, FormationLibraryEditorController(library))
-
-    print(formations)
-
-
-    root.mainloop()
