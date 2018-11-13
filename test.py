@@ -19,9 +19,4 @@ menubutton.pack(side="top", padx=20, pady=20)
 
 root.mainloop()"""
 
-puppy = [1, 2, 3, 4]
-for num in puppy:
-    if num == 2:
-        del puppy[1]
-
-print(puppy)
+print("sdlkjkasdsss".split('/'))
