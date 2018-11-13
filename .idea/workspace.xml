@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5f938c9e-117d-4a20-aa45-21b76d9afe45" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/defensiveformation/placementrules/conditionalplacementrule.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/defensiveformation/placementrules/placementruleutils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/defensiveformation/alignmentplacementrule.py" beforeDir="false" afterPath="$PROJECT_DIR$/defensiveformation/placementrules/alignmentplacementrule.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/defensiveformation/defensecontroller.py" beforeDir="false" afterPath="$PROJECT_DIR$/defensiveformation/defensecontroller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/defensiveformation/defenselibrary1.scmdl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/defensiveformation/defensiveeditor.py" beforeDir="false" afterPath="$PROJECT_DIR$/defensiveformation/defensiveeditor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/defensiveformation/defensivelibraryeditor.py" beforeDir="false" afterPath="$PROJECT_DIR$/defensiveformation/defensivelibraryeditor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/defensiveformation/defensiveutils.py" beforeDir="false" afterPath="$PROJECT_DIR$/defensiveformation/defensiveutils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/defensiveformation/defensivevisualizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/defensiveformation/defensivevisualizer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/defensiveformation/library1.scmfl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/defensiveformation/overplacementrule.py" beforeDir="false" afterPath="$PROJECT_DIR$/defensiveformation/placementrules/overplacementrule.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/formationutils.py" beforeDir="false" afterPath="$PROJECT_DIR$/misc/formationutils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/misc/powerpointexporter.py" beforeDir="false" afterPath="$PROJECT_DIR$/misc/powerpointexporter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/offensiveformation/formationlibraryedtior.py" beforeDir="false" afterPath="$PROJECT_DIR$/offensiveformation/formationlibraryedtior.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/defensiveformation/placementrules/conditionalplacementrule.py" beforeDir="false" afterPath="$PROJECT_DIR$/defensiveformation/placementrules/conditionalplacementrule.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,95 +15,94 @@
     <session id="1265517259">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="17" />
+          <entry key="project.closed" value="18" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.3" value="9" />
-          <entry key="project.open.time.4" value="6" />
+          <entry key="project.open.time.4" value="7" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="17" />
+          <entry key="project.opened" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="formationutils" value="1" />
-          <entry key="py" value="85" />
+          <entry key="py" value="86" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="86" />
+          <entry key="Python" value="87" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="27" />
-          <entry key="py" value="22305" />
+          <entry key="py" value="23503" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="27" />
-          <entry key="Python" value="22305" />
+          <entry key="Python" value="23503" />
         </counts>
       </usages-collector>
     </session>
     <session id="518015055">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.6" value="3" />
-          <entry key="project.open.time.7" value="2" />
+          <entry key="project.open.time.7" value="3" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="26" />
-          <entry key="py" value="8176" />
+          <entry key="py" value="10614" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="26" />
-          <entry key="Python" value="8176" />
+          <entry key="Python" value="10614" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="58" />
+          <entry key="py" value="67" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="58" />
+          <entry key="Python" value="67" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/defensiveformation/placementrules/placementruleutils.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/defensiveformation/placementrules/conditionalplacementrule.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="14" column="56" selection-start-line="14" selection-start-column="56" selection-end-line="14" selection-end-column="56" />
+            <state relative-caret-position="654">
+              <caret line="148" column="47" selection-start-line="148" selection-start-column="47" selection-end-line="148" selection-end-column="47" />
               <folding>
-                <element signature="e#0#118#0" expanded="true" />
+                <element signature="e#0#21#0" expanded="true" />
+                <marker date="1542068222960" expanded="true" signature="6412:6634" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/defensiveformation/placementrules/conditionalplacementrule.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/defensiveformation/placementrules/placementruleutils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="43" column="73" selection-start-line="43" selection-start-column="73" selection-end-line="43" selection-end-column="73" />
+            <state relative-caret-position="379">
+              <caret line="18" column="24" selection-start-line="18" selection-end-line="18" selection-end-column="24" />
               <folding>
-                <element signature="e#0#21#0" expanded="true" />
-                <marker date="1541979254526" expanded="true" signature="155:246" ph="..." />
-                <marker date="1541979254526" expanded="true" signature="1731:1751" ph="..." />
+                <element signature="e#0#118#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -125,38 +111,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/defensiveformation/placementrules/overplacementrule.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1606">
-              <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/defensiveformation/defensivelibraryeditor.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="487">
-              <caret line="43" selection-start-line="43" selection-end-line="43" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/defensiveformation/defensivevisualizer.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
-              <caret line="51" column="52" lean-forward="true" selection-start-line="39" selection-start-column="8" selection-end-line="51" selection-end-column="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/defensiveformation/defense.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="-770">
+              <caret line="86" selection-start-line="86" selection-end-line="86" />
             </state>
           </provider>
         </entry>
@@ -183,6 +139,8 @@
       <find>formation</find>
       <find>checked_</find>
       <find>placement_type_dict</find>
+      <find>update_condition</find>
+      <find>controller</find>
     </findStrings>
     <replaceStrings>
       <replace>affected_player_tags</replace>
@@ -235,6 +193,7 @@
         <option value="$PROJECT_DIR$/defensiveformation/alignmentrules/conditionalplacementrule.py" />
         <option value="$PROJECT_DIR$/defensiveformation/defensecontroller.py" />
         <option value="$PROJECT_DIR$/defensiveformation/placementrules/placementruleutils.py" />
+        <option value="$PROJECT_DIR$/defensiveformation/placementrules/conditions.py" />
         <option value="$PROJECT_DIR$/defensiveformation/placementrules/conditionalplacementrule.py" />
       </list>
     </option>
@@ -253,7 +212,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -276,6 +234,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -445,12 +404,12 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16438356" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16332982" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3253796" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32321042" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3985765" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -477,14 +436,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/tkinter/__init__.py" />
-    <entry file="file://C:/Python36/Lib/tkinter/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46992">
-          <caret line="2139" selection-start-line="2139" selection-end-line="2139" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://C:/Python36/Lib/tkinter/__init__.py" />
     <entry file="file://$PROJECT_DIR$/defensiveformation/defensiveutils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="66">
@@ -545,20 +497,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/setup.py" />
-    <entry file="file://$PROJECT_DIR$/defensiveformation/placementrules/alignmentplacementrule.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3168">
-          <caret line="154" selection-start-line="154" selection-end-line="154" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/defensiveformation/defensivelibrary.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
           <caret line="6" column="8" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#65#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -569,49 +511,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/defensiveformation/defensiveeditor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="76" selection-start-line="76" selection-end-line="76" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/defensiveformation/defensecontroller.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="572">
           <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
-          <folding>
-            <element signature="e#0#64#0" expanded="true" />
-            <marker date="1541976043574" expanded="true" signature="1515:1668" ph="..." />
-            <marker date="1541976043574" expanded="true" signature="2051:2142" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/defensiveformation/placementrules/placementruleutils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="56" selection-start-line="14" selection-start-column="56" selection-end-line="14" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#118#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/defensiveformation/placementrules/overplacementrule.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1606">
-          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/defensiveformation/defensivelibraryeditor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
+        <state relative-caret-position="858">
           <caret line="43" selection-start-line="43" selection-end-line="43" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/defensiveformation/defensivevisualizer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1078">
+          <caret line="51" column="52" selection-start-line="39" selection-start-column="8" selection-end-line="51" selection-end-column="52" />
         </state>
       </provider>
     </entry>
@@ -622,21 +539,53 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/defensiveformation/defensivevisualizer.py">
+    <entry file="file://$PROJECT_DIR$/defensiveformation/defensiveeditor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="51" column="52" lean-forward="true" selection-start-line="39" selection-start-column="8" selection-end-line="51" selection-end-column="52" />
+        <state relative-caret-position="169">
+          <caret line="78" column="66" lean-forward="true" selection-start-line="73" selection-start-column="8" selection-end-line="78" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/defensiveformation/placementrules/conditions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/random.py" />
+    <entry file="file://$PROJECT_DIR$/defensiveformation/placementrules/alignmentplacementrule.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-164">
+          <caret line="134" column="50" selection-start-line="134" selection-start-column="40" selection-end-line="134" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/tkinter/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/defensiveformation/placementrules/overplacementrule.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-770">
+          <caret line="86" selection-start-line="86" selection-end-line="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/defensiveformation/placementrules/placementruleutils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="18" column="24" selection-start-line="18" selection-end-line="18" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#118#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/defensiveformation/placementrules/conditionalplacementrule.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="43" column="73" selection-start-line="43" selection-start-column="73" selection-end-line="43" selection-end-column="73" />
+        <state relative-caret-position="654">
+          <caret line="148" column="47" selection-start-line="148" selection-start-column="47" selection-end-line="148" selection-end-column="47" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-            <marker date="1541979254526" expanded="true" signature="155:246" ph="..." />
-            <marker date="1541979254526" expanded="true" signature="1731:1751" ph="..." />
+            <marker date="1542068222960" expanded="true" signature="6412:6634" ph="..." />
           </folding>
         </state>
       </provider>
