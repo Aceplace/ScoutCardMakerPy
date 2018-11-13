@@ -102,7 +102,7 @@ class DefensiveEditor(Frame):
             self.placement_rule_frame.destroy()
 
         self.placement_rule_frame = self.controller.get_placement_rule_gui(self)
-        self.placement_rule_frame.grid(row = 0, column = 3, sticky = W)
+        self.placement_rule_frame.grid(row = 0, column = 3, sticky = W+E)
         self.update_view()
 
     def update_view(self):

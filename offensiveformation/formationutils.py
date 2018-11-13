@@ -75,6 +75,11 @@ def get_attached_receiver_strength(formation, default_strength='RT'):
 
     return get_receiver_strength(formation, default_strength)
 
+def get_number_of_receivers(formation, direction):
+    if direction == 'LT':
+        return len([player for label, player in formation.players.items() if player.x < formation.lt.x])
+    elif direction == 'RT':
+        return len([player for label, player in formation.players.items() if player.x > formation.rt.x])
 
 def get_number_of_attached_receivers(formation, direction):
     number_of_attached_receivers = 0
@@ -160,5 +165,21 @@ def get_receivers_outside_in(formation, direction):
         receivers.sort(key = lambda player: (-1*player.x, player.y))
 
     return receivers
+
+
+def get_formation_structure(formation):
+    receivers_to_left = get_number_of_receivers(formation, 'LT')
+    receivers_to_right = get_number_of_receivers(formation, 'RT')
+    if receivers_to_left == 1 and receivers_to_right == 1:
+        return '1x1'
+    if (receivers_to_left == 1 and receivers_to_right == 2) or (receivers_to_left == 2 and receivers_to_right == 1):
+        return '2x1'
+    if receivers_to_left == 2 and receivers_to_right == 2:
+        return '2x2'
+    if (receivers_to_left == 3 and receivers_to_right == 1) or (receivers_to_left == 1 and receivers_to_right == 3):
+        return '3x1'
+    if (receivers_to_left == 3 and receivers_to_right == 2) or (receivers_to_left == 2 and receivers_to_right == 3):
+        return '3x2'
+    return '4x1'
 
 

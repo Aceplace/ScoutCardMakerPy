@@ -1,9 +1,2 @@
-
-
-dict ={
-    'kitty':(1,2),
-    'naughty':(1,2)
-}
-
-for one, (two, three) in dict.items():
-    print(one, two, three)
+for i in range(11, 10):
+    print(i)

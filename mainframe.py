@@ -9,6 +9,7 @@ from offensiveformation.formationlibraryedtior import FormationLibraryEditor
 from offensiveformation.formationlibraryeditorcontroller import FormationLibraryEditorController
 from misc.scoutcardmakerexceptions import ScoutCardMakerException
 
+
 class App(Tk):
     def __init__(self, *args, **kwargs):
         Tk.__init__(self, *args, **kwargs)

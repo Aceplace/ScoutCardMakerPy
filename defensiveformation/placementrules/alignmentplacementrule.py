@@ -1,4 +1,4 @@
-from misc.formationutils import *
+from offensiveformation.formationutils import *
 from tkinter import *
 
 class Alignment(Enum):

@@ -25,6 +25,10 @@ class DefenseController:
         placement_rule_names = [label for label, rule_gui in placement_type_dict.items()]
         return placement_rule_names
 
+    def get_placement_names_without_conditional(self):
+        placement_rule_names = [label for label, rule_gui in placement_type_dict.items() if label !='Conditional']
+        return placement_rule_names
+
     def get_placement_rule_name_from_placement_rule(self, placement_rule):
         for label, placement_type_class in placement_type_dict.items():
             if type(placement_rule) == placement_type_class:
@@ -46,12 +50,24 @@ class DefenseController:
         if hasattr(self, 'view'):
             self.view.update_view()
 
+    def update_view(self):
+        if hasattr(self, 'view'):
+            self.view.update_view()
+
     def get_placement_rule_gui(self, root):
         return placement_type_gui_dict[type(self.current_defender.placement_rule)](root, self)
+
+    def get_placement_rule_gui_class_from_placement_rule(self, placement_rule):
+        return placement_type_gui_dict[type(placement_rule)]
 
     def get_current_defender_placement_rule_name(self):
         return placement_type_name_dict[type(self.current_defender.placement_rule)]
 
+    def get_placement_rule_from_name(self, placement_rule_name):
+        return placement_type_dict[placement_rule_name]()
+
+    def get_placement_type_name_from_placement_rule(self, placement_rule):
+        return placement_type_name_dict[type(placement_rule)]
 
     def load_offensive_formation(self, formation_name):
         self.current_formation = self.formation_library.get_composite_formation(formation_name)

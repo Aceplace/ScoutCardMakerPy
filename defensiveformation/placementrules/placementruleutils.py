@@ -1,6 +1,5 @@
 from defensiveformation.placementrules.alignmentplacementrule import AlignmentPlacementRule, AlignmentPlacementRuleGUI
-from defensiveformation.placementrules.conditionalplacementrule import ConditionalPlacementRule, \
-    ConditionalPlacementRuleGUI
+from defensiveformation.placementrules.conditionalplacementrule import ConditionalPlacementRule, ConditionalPlacementRuleGUI
 from defensiveformation.placementrules.overplacementrule import OverPlacementRule, OverPlacementRuleGUI
 
 
