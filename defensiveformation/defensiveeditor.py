@@ -19,6 +19,7 @@ class DefensiveEditor(Frame):
         self.offensive_formation_entry = Entry(offensive_formation_frame)
         self.offensive_formation_entry.pack()
         self.get_offensive_formation_btn = Button(offensive_formation_frame, text='Get Offensive Formation', command=self.get_offensive_formation)
+        self.offensive_formation_entry.bind('<Return>', self.get_offensive_formation)
         self.get_offensive_formation_btn.pack()
         offensive_formation_frame.grid(row=0, column=0, stick=W)
 
@@ -148,7 +149,7 @@ class DefensiveEditor(Frame):
         self.f_cb_value.set(True if 'F' in self.controller.current_defense.affected_defender_tags else False)
         self.q_cb_value.set(True if 'Q' in self.controller.current_defense.affected_defender_tags else False)
 
-    def get_offensive_formation(self):
+    def get_offensive_formation(self, *args):
         try:
             self.controller.load_offensive_formation(self.offensive_formation_entry.get())
             self.update_view()

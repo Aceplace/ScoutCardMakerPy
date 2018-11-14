@@ -20,11 +20,13 @@ class DefensiveLibraryEditor(Frame):
         self.defense_name_entry = Entry(defense_name_frame)
         self.defense_name_entry.pack()
         self.save_defense_btn = Button(defense_name_frame, text='Save Defense', command=self.save_defense)
+        self.defense_name_entry.bind('<Return>' , self.save_defense)
         self.save_defense_btn.pack()
         Label(defense_name_frame, text='Composite Defense').pack()
         self.composite_defense_entry = Entry(defense_name_frame)
         self.composite_defense_entry.pack()
         self.load_composite_btn = Button(defense_name_frame, text='Load Defense', command=self.load_composite_defense)
+        self.composite_defense_entry.bind('<Return>', self.load_composite_defense)
         self.load_composite_btn.pack()
         defense_name_frame.grid(row=0, column=0, sticky=W)
 
@@ -48,7 +50,7 @@ class DefensiveLibraryEditor(Frame):
         self.refresh_library()
 
 
-    def save_defense(self):
+    def save_defense(self, *args):
         try:
             affected_defender_tags = self.defense_editor.get_affected_defenders()
 
@@ -58,7 +60,7 @@ class DefensiveLibraryEditor(Frame):
         except ScoutCardMakerException as e:
             messagebox.showerror('Save Defense Error', e)
 
-    def load_composite_defense(self):
+    def load_composite_defense(self, *args):
         try:
             self.controller.load_composite_defense_from_library(self.composite_defense_entry.get())
             self.defense_editor.update_view()

@@ -20,11 +20,13 @@ class FormationLibraryEditor(Frame):
         self.formation_name_entry = Entry(formation_entry_frame)
         self.formation_name_entry.pack()
         self.save_formation_btn = Button(formation_entry_frame, text='Save Formation', command=self.save_formation)
+        self.formation_name_entry.bind('<Return>', self.save_formation)
         self.save_formation_btn.pack()
         Label(formation_entry_frame, text='Composite Name:').pack()
         self.composite_name_entry = Entry(formation_entry_frame)
         self.composite_name_entry.pack()
         self.load_composite_btm = Button(formation_entry_frame, text='Load Composite', command=self.load_composite_formation)
+        self.composite_name_entry.bind('<Return>', self.load_composite_formation)
         self.load_composite_btm.pack()
         formation_entry_frame.grid(row=0, column=0)
 
@@ -82,7 +84,7 @@ class FormationLibraryEditor(Frame):
             self.q_cb_value.set(True if 'Q' in self.controller.current_formation.affected_player_tags else False)
             self.formation_visual_editor.visualize_formation(self.controller.current_formation)
 
-    def save_formation(self):
+    def save_formation(self, *args):
         try:
             affected_player_tags = []
             if self.t_cb_value.get():
@@ -114,7 +116,7 @@ class FormationLibraryEditor(Frame):
                 messagebox.showerror('Delete Formation Error', e)
 
 
-    def load_composite_formation(self):
+    def load_composite_formation(self, *args):
         try:
             self.controller.load_composite_formation_from_library(self.composite_name_entry.get())
             self.formation_visual_editor.visualize_formation(self.controller.current_formation)

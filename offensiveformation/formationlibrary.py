@@ -68,13 +68,20 @@ class FormationLibrary:
 
 
     def save_library(self, filename):
-        file_object = open(filename, 'wb')
-        pickle.dump(self.formations, file_object)
-        file_object.close()
+        try:
+            file_object = open(filename, 'wb')
+            pickle.dump(self.formations, file_object)
+            file_object.close()
+        except Exception as e:
+            raise ScoutCardMakerException(str(e))
 
     def load_library(self, filename):
-        file_object = open(filename, 'rb')
-        self.formations = pickle.load(file_object)
+        try:
+            file_object = open(filename, 'rb')
+            formations = pickle.load(file_object)
+            self.formations = formations
+        except Exception as e:
+            raise ScoutCardMakerException(str(e))
 
     def get_formation(self, formation_name):
         if not self.formations:

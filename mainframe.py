@@ -5,13 +5,14 @@ import os
 
 from defensiveformation.defensecontroller import DefenseController
 from defensiveformation.defensivelibraryeditor import DefensiveLibraryEditor
+from misc.preferences import Preferences
 from offensiveformation.formationlibraryedtior import FormationLibraryEditor
 from offensiveformation.formationlibraryeditorcontroller import FormationLibraryEditorController
 from misc.scoutcardmakerexceptions import ScoutCardMakerException
 
 
 class App(Tk):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, preferences, *args, **kwargs):
         Tk.__init__(self, *args, **kwargs)
 
         #menu setup
@@ -29,7 +30,7 @@ class App(Tk):
         filemenu.add_command(label='Save Formation Library As...', command=self.save_formation_library_as)
         filemenu.add_command(label='Save Defense Library As...', command=self.save_defense_library_as)
         filemenu.add_separator()
-        filemenu.add_command(label='Exit', command=self.destroy)
+        filemenu.add_command(label='Exit', command=self.on_close)
         menubar.add_cascade(label='File', menu=filemenu)
 
         viewmenu = Menu(menubar, tearoff = 0)
@@ -59,11 +60,27 @@ class App(Tk):
         self.current_frame = self.frames[FormationLibraryEditor]
         self.current_frame.tkraise()
 
-        self.current_formation_library_filename = None
-        self.current_defense_library_filename = None
+
+        self.current_formation_library_filename = preferences.last_saved_formation_library
+        if self.current_formation_library_filename:
+            try:
+                self.formation_library_editor_controller.load_library(self.current_formation_library_filename)
+                self.defense_editor_controller.set_formation_library(self.formation_library_editor_controller.formation_library)
+            except ScoutCardMakerException as e:
+                messagebox.showerror('Open Library Error', e)
+                self.current_formation_library_filename = None
+
+        self.current_defense_library_filename = preferences.last_saved_defense_library
+        if self.current_defense_library_filename:
+            try:
+                self.defense_editor_controller.load_defense_library(self.current_defense_library_filename)
+            except ScoutCardMakerException as e:
+                messagebox.showerror('Open Library Error', e)
+                self.current_defense_library_filename = None
+
 
     def new_formation_library(self):
-        self.current_libary_filename = None
+        self.current_formation_library_filename = None
         self.formation_library_editor_controller.new_library()
 
     def new_defense_library(self):
@@ -93,9 +110,10 @@ class App(Tk):
     def save_formation_library(self):
         try:
             library_filename = None
-            if self.current_formation_library_filename:
+            if self.current_formation_library_filename and os.path.isfile(self.current_formation_library_filename):
                 library_filename = self.current_formation_library_filename
             else:
+                self.current_formation_library_filename = None
                 self.save_formation_library_as()
                 return
 
@@ -108,9 +126,10 @@ class App(Tk):
     def save_defense_library(self):
         try:
             library_filename = None
-            if self.current_defense_library_filename:
+            if self.current_defense_library_filename and os.path.isfile(self.current_defense_library_filename):
                 library_filename = self.current_defense_library_filename
             else:
+                self.current_defense_library_filename = None
                 self.save_defense_library_as()
                 return
 
@@ -152,8 +171,17 @@ class App(Tk):
             self.defense_editor_controller.set_formation_library(self.formation_library_editor_controller.formation_library)
         self.current_frame.tkraise()
 
+    def on_close(self):
+        preferences = Preferences()
+        preferences.last_saved_formation_library = self.current_formation_library_filename
+        preferences.last_saved_defense_library = self.current_defense_library_filename
+        preferences.save_preferences()
+        self.destroy()
 
 
-root = App()
+preferences = Preferences()
+preferences.load_preferences()
+root = App(preferences)
 root.state('zoomed')
+root.protocol('WM_DELETE_WINDOW', root.on_close)
 root.mainloop()

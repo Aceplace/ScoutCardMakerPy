@@ -115,9 +115,9 @@ class OverPlacementRuleGUI(Frame):
         self.strength_type_om = OptionMenu(self, self.strength_type_value, *strength_type_names, command=self.update_defender)
         self.strength_type_om.grid(row=3, column=1, sticky=W+E)
 
-        Label(self, text='Depth:').grid(row=3, column=0, sticky=E)
+        Label(self, text='Depth:').grid(row=4, column=0, sticky=E)
         self.depth_sb = Spinbox(self, from_ = 1 , to_ = 15, state='readonly', command=self.update_defender)
-        self.depth_sb.grid(row=3, column=1, sticky=W+E)
+        self.depth_sb.grid(row=4, column=1, sticky=W+E)
 
         self.update_gui_with_defender_info()
 

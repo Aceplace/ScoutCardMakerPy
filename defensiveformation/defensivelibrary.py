@@ -25,13 +25,20 @@ class DefensiveLibrary:
             raise ScoutCardMakerException(f'{defense_to_delete} not in defenses.')
 
     def save_library(self, filename):
-        file_object = open(filename, 'wb')
-        pickle.dump(self.defenses, file_object)
-        file_object.close()
+        try:
+            file_object = open(filename, 'wb')
+            pickle.dump(self.defenses, file_object)
+            file_object.close()
+        except Exception as e:
+            raise ScoutCardMakerException(str(e))
 
     def load_library(self, filename):
-        file_object = open(filename, 'rb')
-        self.defenses = pickle.load(file_object)
+        try:
+            file_object = open(filename, 'rb')
+            defenses = pickle.load(file_object)
+            self.defenses = defenses
+        except Exception as e:
+            raise ScoutCardMakerException(str(e))
 
     def get_defense(self, defense_name):
         defense = get_default_defense()
