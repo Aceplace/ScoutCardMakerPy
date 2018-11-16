@@ -1,5 +1,8 @@
-file = open('puppy.txt')
+import pickle
+import traceback
 
-lines = file.read().split('\n')
-if not lines[0]:
-    print('no pup')
+try:
+    open('nonexistent.txt','r')
+except Exception as e:
+    print('puppy')
+    traceback.print_exc()

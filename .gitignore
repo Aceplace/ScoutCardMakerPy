@@ -3,3 +3,6 @@
 *.xlsx
 *.csv
 *.dat
+
+__pycache__/
+.idea/

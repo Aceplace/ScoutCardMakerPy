@@ -29,7 +29,7 @@ class DefensiveLibrary:
             file_object = open(filename, 'wb')
             pickle.dump(self.defenses, file_object)
             file_object.close()
-        except Exception as e:
+        except IOError as e:
             raise ScoutCardMakerException(str(e))
 
     def load_library(self, filename):
@@ -37,7 +37,7 @@ class DefensiveLibrary:
             file_object = open(filename, 'rb')
             defenses = pickle.load(file_object)
             self.defenses = defenses
-        except Exception as e:
+        except IOError as e:
             raise ScoutCardMakerException(str(e))
 
     def get_defense(self, defense_name):

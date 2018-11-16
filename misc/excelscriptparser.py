@@ -1,9 +1,12 @@
+import traceback
+
 import xlrd as xl
 from tkinter import *
 from misc.scoutcardmakerexceptions import ScoutCardMakerException
 
 
 def get_script_from_excel_file(root, file_name):
+
     try:
         work_book = xl.open_workbook(file_name)
 
@@ -23,12 +26,16 @@ def get_script_from_excel_file(root, file_name):
             play_info['Formation'] = row_values[3]
             play_info['Play'] = row_values[4]
             play_info['Defense'] = row_values[5]
-            play_info['Card Maker Formation'] = row_values[6]
-            play_info['Card Maker Defense'] = row_values[7]
-            play_info['Note'] = row_values[8]
+            play_info['Note'] = row_values[6]
+            play_info['Card Maker Formation'] = row_values[7].strip().upper()
+            play_info['Card Maker Defense'] = row_values[8].strip().upper()
             plays.append(play_info)
-    except Exception as e:
+    except IOError as e:
         raise ScoutCardMakerException(str(e))
+    except Exception:
+        traceback.print_exc()
+        raise ScoutCardMakerException('Excel sheet incorrectly formatted.')
+
 
     return plays
 

@@ -5,6 +5,8 @@ import os
 
 from defensiveformation.defensecontroller import DefenseController
 from defensiveformation.defensivelibraryeditor import DefensiveLibraryEditor
+from misc.excelscriptparser import get_script_from_excel_file
+from misc.powerpointexporter import export_to_powerpoint
 from misc.preferences import Preferences
 from offensiveformation.formationlibraryedtior import FormationLibraryEditor
 from offensiveformation.formationlibraryeditorcontroller import FormationLibraryEditorController
@@ -39,6 +41,10 @@ class App(Tk):
         viewmenu.add_radiobutton(label='Defense Library', value=2, variable=self.viewmenu_option, command=self.change_view)
         self.viewmenu_option.set(1)
         menubar.add_cascade(label='View', menu=viewmenu)
+
+        createcardsmenu = Menu(menubar, tearoff=0)
+        createcardsmenu.add_command(label='Create Scout Cards for Script', command=self.create_scout_cards)
+        menubar.add_cascade(label='Create Scout Cards', menu=createcardsmenu)
         self.config(menu=menubar)
 
         #frame set ups
@@ -162,6 +168,26 @@ class App(Tk):
                 self.current_defense_library_filename = library_filename
         except ScoutCardMakerException as e:
                 messagebox.showerror('Save Library Error', e)
+
+    def create_scout_cards(self):
+        try:
+            script_filename = filedialog.askopenfilename(initialdir=os.getcwd(), title="Select Script",
+                                                          filetypes=(("Excel", "*.xlsx"),))
+            if script_filename:
+                plays = get_script_from_excel_file(self, script_filename)
+                cards_filename = filedialog.asksaveasfilename(initialdir=os.getcwd(),
+                                                                title='Create Scout Cards',
+                                                                filetypes=(('Powerpoint', '*.pptx'),),
+                                                                defaultextension='.pptx')
+
+                if cards_filename:
+                    export_to_powerpoint(cards_filename, plays,
+                                         self.formation_library_editor_controller.formation_library,
+                                         self.defense_editor_controller.defense_library)
+        except ScoutCardMakerException as e:
+            messagebox.showerror('Create Scout Cards Error', e)
+
+
 
     def change_view(self):
         if self.viewmenu_option.get() == 1:

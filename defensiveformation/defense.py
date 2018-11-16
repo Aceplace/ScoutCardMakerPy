@@ -47,3 +47,10 @@ class Defense:
             self.defenders[tag].placement_rule = override_defense.defenders[tag].placement_rule
             if tag not in self.affected_defender_tags:
                 self.affected_defender_tags.append(tag)
+
+    def get_placed_defenders(self, formation):
+        placed_defenders = []
+        for tag, defender in self.defenders.items():
+            x, y = defender.place_defender(formation)
+            placed_defenders.append((defender.label, x, y))
+        return placed_defenders

@@ -72,7 +72,7 @@ class FormationLibrary:
             file_object = open(filename, 'wb')
             pickle.dump(self.formations, file_object)
             file_object.close()
-        except Exception as e:
+        except IOError as e:
             raise ScoutCardMakerException(str(e))
 
     def load_library(self, filename):
@@ -80,7 +80,7 @@ class FormationLibrary:
             file_object = open(filename, 'rb')
             formations = pickle.load(file_object)
             self.formations = formations
-        except Exception as e:
+        except IOError as e:
             raise ScoutCardMakerException(str(e))
 
     def get_formation(self, formation_name):
