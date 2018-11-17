@@ -10,13 +10,12 @@ class Alignment(Enum):
     FOUR_I = 5
     FOUR = 6
     FIVE = 7
-    FIVE_I = 8
-    SIX = 9
-    SIX_I = 10
-    SEVEN = 11
-    EIGHT_I = 12
-    EIGHT = 13
-    NINE = 14
+    SIX = 8
+    SIX_I = 9
+    SEVEN = 10
+    EIGHT_I = 11
+    EIGHT = 12
+    NINE = 13
 
 class AlignmentPlacementRule():
     def __init__(self, alignment = Alignment.THREE, direction = Direction.STR,
@@ -66,13 +65,13 @@ class AlignmentPlacementRule():
         elif self.alignment == Alignment.SIX:
             align_player = get_first_attached(formation, 'LT') if align_side == Direction.LEFT else get_first_attached(formation, 'RT')
             if align_player:
-                x = align_player.x - flip
+                x = align_player.x
             else:
                 x = (formation.rt.x + GHOST_DISTANCE) * flip
         elif self.alignment == Alignment.SEVEN:
             align_player = get_first_attached(formation, 'LT') if align_side == Direction.LEFT else get_first_attached(formation, 'RT')
             if align_player:
-                x = align_player.x - flip
+                x = align_player.x + flip
             else:
                 x = (formation.rt.x + GHOST_DISTANCE) * flip
         elif self.alignment == Alignment.EIGHT_I:
@@ -84,13 +83,13 @@ class AlignmentPlacementRule():
         elif self.alignment == Alignment.EIGHT:
             align_player = get_second_attached(formation, 'LT') if align_side == Direction.LEFT else get_second_attached(formation, 'RT')
             if align_player:
-                x = align_player.x - flip
+                x = align_player.x
             else:
                 x = (formation.rt.x + GHOST_DISTANCE * 2) * flip
         elif self.alignment == Alignment.NINE:
             align_player = get_second_attached(formation, 'LT') if align_side == Direction.LEFT else get_second_attached(formation, 'RT')
             if align_player:
-                x = align_player.x - flip
+                x = align_player.x + flip
             else:
                 x = (formation.rt.x + GHOST_DISTANCE * 2) * flip
 

@@ -130,3 +130,6 @@ class FormationLibrary:
     def get_sorted_formation_names_right(self):
         return sorted([formation_name for formation_name in self.formations.keys() if formation_name.split()[-1] == 'RT'])
 
+    def get_sorted_formation_names_no_direction(self):
+        return sorted([formation_name.split()[0] for formation_name in self.formations.keys() if formation_name.split()[-1] == 'RT'])
+

@@ -18,13 +18,21 @@
 --add more conditions (formation structure)
 --    str/wk one receivers/two receivers/three receivers, nub/split, wing/pro/twin, bunch/indywing/indy
 
+--change formation list box to not list "RT"
 
-change formation list box to not list "RT"
+conditions -> 'or' conditions
+strength type -> back strength
 
+ask to save before closing
+automatically save library when you save a defense or formation (maybe)
 ctrl-s saving
+
+
 
 refactors
 change to string values in enum<-->Set up so formation works Direction.LT and Direction.RT
 major refactor--> Change from imports to import as (makes it more obvious where definitions are coming from)
 misc refactors
+
+
 

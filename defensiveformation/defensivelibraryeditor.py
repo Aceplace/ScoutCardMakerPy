@@ -86,6 +86,8 @@ class DefensiveLibraryEditor(Frame):
         listbox = event.widget
         if listbox.curselection():
             index = listbox.curselection()[0]
+            self.defense_name_entry.delete(0,END)
+            self.defense_name_entry.insert(0,listbox.get(index))
             self.controller.load_defense_from_library(listbox.get(index))
             self.defense_editor.set_affected_defender_checkboxes()
             self.defense_editor.change_defender() #this forces the editor to update the placement rule gui

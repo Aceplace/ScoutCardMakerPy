@@ -75,7 +75,9 @@ class FormationLibraryEditor(Frame):
         listbox = event.widget
         if listbox.curselection():
             index = listbox.curselection()[0]
-            self.controller.load_formation_from_library(listbox.get(index))
+            self.formation_name_entry.delete(0,END)
+            self.formation_name_entry.insert(0,listbox.get(index))
+            self.controller.load_formation_from_library(listbox.get(index) + ' RT')
             self.t_cb_value.set(True if 'T' in self.controller.current_formation.affected_player_tags else False)
             self.h_cb_value.set(True if 'H' in self.controller.current_formation.affected_player_tags else False)
             self.x_cb_value.set(True if 'X' in self.controller.current_formation.affected_player_tags else False)
@@ -110,7 +112,7 @@ class FormationLibraryEditor(Frame):
         if self.library_lb.curselection():
             try:
                 index = self.library_lb.curselection()[0]
-                self.controller.delete_formation_from_library(self.library_lb.get(index))
+                self.controller.delete_formation_from_library(self.library_lb.get(index) + ' RT')
                 self.refresh_library_listbox()
             except ScoutCardMakerException as e:
                 messagebox.showerror('Delete Formation Error', e)
@@ -125,7 +127,7 @@ class FormationLibraryEditor(Frame):
 
 
     def refresh_library_listbox(self):
-        formations = self.controller.formation_library.get_sorted_formation_names_right()
+        formations = self.controller.formation_library.get_sorted_formation_names_no_direction()
         self.library_lb.delete(0, END)
         for formation in formations:
             self.library_lb.insert(END, formation)

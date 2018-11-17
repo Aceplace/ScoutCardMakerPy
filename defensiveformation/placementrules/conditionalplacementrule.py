@@ -22,7 +22,7 @@ class ConditionalPlacementRule:
             if all_conditions_true:
                 x, y = condition_placement.placement_rule.place(formation)
                 break
-        if not x or not y:
+        if x is None or y is None: #needed to change from not x to make sure x == 0 evaluates to false
             x , y = BAD_PLACEMENT
 
         return x, y
