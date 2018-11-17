@@ -78,8 +78,3 @@ class ConditionsMenu(Frame):
     def change_condition(self):
         self.parent_gui.change_condition(self.conditions_menu_value.get())
 
-
-if __name__=='__main__':
-    root = Tk()
-    ConditionsMenu(root, None).pack()
-    root.mainloop()

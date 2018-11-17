@@ -234,68 +234,6 @@ class SubconditionalPlacementRuleGUI(Frame):
         self.condition_placement.conditions = conditions
         self.parent_gui.refresh_position()
 
-"""
-class ConditionsGui(Frame):
-    def __init__(self, root, parent_gui, conditions):
-        Frame.__init__(self, root)
-        self.parent_gui = parent_gui
-
-        condition_names = [name for name, condition in condition_name_condition_evaluate_dict.items()]
-        condition_names.append('Delete Condition')
-        self.condition_names = condition_names
-
-        Button(self, text='Add Condition', command=self.add_condition).grid(row=0, column=0,)
-        self.condition_menus = []
-
-        self.populate_condition_menus(conditions)
-
-    def populate_condition_menus(self, conditions):
-        for condition in conditions:
-            condition_menu = {}
-            condition_menu['condition_value'] = StringVar()
-            condition_menu['condition_value'].set(condition)
-            condition_menu['condition_value_om'] = OptionMenu(self, condition_menu['condition_value'],
-                                                              *self.condition_names, command=self.change_condition)
-            condition_menu['condition_value_om'].grid(row=len(self.condition_menus) + 1, column=0, sticky=W + E)
-            self.condition_menus.append(condition_menu)
-
-
-        for index in range(len(self.condition_menus)):
-            self.condition_menus[index]['condition_value_om'].grid(row = index + 1 , column=0, sticky=W + E)
-
-    def add_condition(self):
-        condition_menu = {}
-        condition_menu['condition_value'] = StringVar()
-        condition_menu['condition_value'].set('Default')
-        condition_menu['condition_value_om'] = OptionMenu(self, condition_menu['condition_value'], *self.condition_names, command=self.change_condition)
-        condition_menu['condition_value_om'].grid(row = len(self.condition_menus) + 1 , column=0, sticky=W + E)
-        self.condition_menus.append(condition_menu)
-
-        conditions = []
-        for condition_menu in self.condition_menus:
-            conditions.append(condition_menu['condition_value'].get())
-        self.parent_gui.update_conditions_in_condition_rule(conditions)
-
-    def change_condition(self, *args):
-        if args[0] == 'Delete Condition':
-            self.delete_condition_menu()
-
-        conditions = []
-        for condition_menu in self.condition_menus:
-            conditions.append(condition_menu['condition_value'].get())
-        self.parent_gui.update_conditions_in_condition_rule(conditions)
-
-    def delete_condition_menu(self):
-        for index in range(len(self.condition_menus)):
-            if self.condition_menus[index]['condition_value'].get() == 'Delete Condition':
-                self.condition_menus[index]['condition_value_om'].grid_forget()
-                self.condition_menus[index]['condition_value_om'].destroy()
-                del self.condition_menus[index]
-                break
-
-        for index in range(len(self.condition_menus)):
-            self.condition_menus[index]['condition_value_om'].grid(row = index + 1 , column=0, sticky=W + E)
-"""
 
 class ConditionsGui(Frame):
     def __init__(self, root, parent_gui, conditions):
@@ -352,14 +290,3 @@ class ConditionsGui(Frame):
 
         for index in range(len(self.condition_menus)):
             self.condition_menus[index]['condition_value_om'].grid(row = index + 1 , column=0, sticky=W + E)
-
-if __name__ == '__main__':
-    root = Tk()
-    class MockController():
-        def __init__(self):
-            from defensiveformation.defense import Defender
-            self.current_defender = Defender('T')
-            self.current_defender.placement_rule = ConditionalPlacementRule()
-
-    ConditionalPlacementRuleGUI(root, MockController()).pack(fill=X, expand=TRUE)
-    root.mainloop()
