@@ -36,7 +36,7 @@ class OverPlacementRule:
         y = self.depth
 
         align_side = get_align_side(self.direction, self.strength_type, formation)
-        receiver_outside_in = get_receivers_outside_in(formation, 'LT' if align_side == Direction.LEFT else 'RT')
+        receivers_outside_across = get_receivers_outside_across(formation, 'LT' if align_side == Direction.LEFT else 'RT')
         if self.leverage == Leverage.INSIDE:
             leverage_adjust = 1 if align_side == Direction.LEFT else -1
         elif self.leverage == Leverage.OUTSIDE:
@@ -45,15 +45,15 @@ class OverPlacementRule:
             leverage_adjust = 0
 
         if self.over_player_option == OverPlayerOption.NUMBER_ONE:
-            x = receiver_outside_in[0].x + leverage_adjust
+            x = receivers_outside_across[0].x + leverage_adjust
         elif self.over_player_option == OverPlayerOption.NUMBER_TWO:
-            x = receiver_outside_in[1].x + leverage_adjust
+            x = receivers_outside_across[1].x + leverage_adjust
         elif self.over_player_option == OverPlayerOption.NUMBER_THREE:
-            x = receiver_outside_in[2].x + leverage_adjust
+            x = receivers_outside_across[2].x + leverage_adjust
         elif self.over_player_option == OverPlayerOption.NUMBER_FOUR:
-            x = receiver_outside_in[3].x + leverage_adjust
+            x = receivers_outside_across[3].x + leverage_adjust
         elif self.over_player_option == OverPlayerOption.NUMBER_FIVE:
-            x = receiver_outside_in[4].x + leverage_adjust
+            x = receivers_outside_across[4].x + leverage_adjust
         elif self.over_player_option == OverPlayerOption.T:
             x = formation.t.x + leverage_adjust
         elif self.over_player_option == OverPlayerOption.H:

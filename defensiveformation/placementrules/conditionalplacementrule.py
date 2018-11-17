@@ -1,7 +1,7 @@
 from tkinter import *
 from defensiveformation.placementrules.alignmentplacementrule import AlignmentPlacementRule
 from defensiveformation.placementrules.conditions import condition_name_condition_evaluate_dict, ConditionsMenu
-
+from defensiveformation.defensiveutils import BAD_PLACEMENT
 
 class ConditionPlacement:
     def __init__(self):
@@ -23,7 +23,7 @@ class ConditionalPlacementRule:
                 x, y = condition_placement.placement_rule.place(formation)
                 break
         if not x or not y:
-            x , y = -50, 14 #magic numbers to just throw the guy somewhere on the field
+            x , y = BAD_PLACEMENT
 
         return x, y
 

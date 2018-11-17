@@ -14,9 +14,17 @@
 --automatically load libraries on startup, if possible
 --open/save dialogs open in previous loaded directory
 
+--add apex placement rule
+--add more conditions (formation structure)
+--    str/wk one receivers/two receivers/three receivers, nub/split, wing/pro/twin, bunch/indywing/indy
 
+
+change formation list box to not list "RT"
 
 ctrl-s saving
 
-add apex placement rule
-add more conditions
+refactors
+change to string values in enum<-->Set up so formation works Direction.LT and Direction.RT
+major refactor--> Change from imports to import as (makes it more obvious where definitions are coming from)
+misc refactors
+

@@ -1,2 +1,12 @@
-puppy = 'Killer\n\nJojo\nLastManStanding'
-print(puppy.split('\n'))
+from enum import Enum
+
+class puppy(Enum):
+    kitty = 'kitty'
+    cat = 'kat'
+    crunch = 'crunch'
+
+yoyo = puppy.kitty
+
+
+if yoyo == 'kitty':
+    print('puppy')

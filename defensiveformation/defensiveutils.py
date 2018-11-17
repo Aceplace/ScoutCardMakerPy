@@ -2,6 +2,9 @@ from defensiveformation.defense import Defense
 from defensiveformation.placementrules.alignmentplacementrule import *
 from defensiveformation.placementrules.overplacementrule import *
 
+
+BAD_PLACEMENT = (-50, 14)
+
 def get_default_defense():
     defense = Defense()
     defense.t.placement_rule = AlignmentPlacementRule(Alignment.THREE, Direction.STR, StrengthType.ATTACHED)

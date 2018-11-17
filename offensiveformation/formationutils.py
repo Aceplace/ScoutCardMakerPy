@@ -153,7 +153,7 @@ def get_second_attached(formation, direction):
     return None
 
 
-def get_receivers_outside_in(formation, direction):
+def get_receivers_outside_across(formation, direction):
     if formation.q.x != 0:
         receivers = [player for label, player in formation.players.items() if label in ['T', 'H', 'X', 'Y', 'Z', 'Q']]
     else:
@@ -162,9 +162,39 @@ def get_receivers_outside_in(formation, direction):
     if direction == 'LT':
         receivers.sort(key = lambda player: (player.x, player.y))
     else:
-        receivers.sort(key = lambda player: (-1*player.x, player.y))
+        receivers.sort(key = lambda player: (-1 * player.x, player.y))
 
     return receivers
+
+def get_receivers_outside_in(formation, direction):
+    if formation.q.x != 0:
+        receivers = [player for label, player in formation.players.items() if label in ['T', 'H', 'X', 'Y', 'Z', 'Q']]
+    else:
+        receivers = [player for label, player in formation.players.items() if label in ['T', 'H', 'X', 'Y', 'Z']]
+
+    if direction == 'LT':
+        receivers.sort(key = lambda player: (player.x, player.y))
+        filtered_receivers = [receiver for receiver in receivers if receiver.x < formation.lt.x]
+    else:
+        receivers.sort(key = lambda player: (-1 * player.x, player.y))
+        filtered_receivers = [receiver for receiver in receivers if receiver.x > formation.rt.x]
+
+    return filtered_receivers
+
+def get_receivers_inside_out(formation, direction):
+    if formation.q.x != 0:
+        receivers = [player for label, player in formation.players.items() if label in ['T', 'H', 'X', 'Y', 'Z', 'Q']]
+    else:
+        receivers = [player for label, player in formation.players.items() if label in ['T', 'H', 'X', 'Y', 'Z']]
+
+    if direction == 'LT':
+        receivers.sort(key = lambda player: (-1 * player.x, player.y))
+        filtered_receivers = [receiver for receiver in receivers if receiver.x < formation.lt.x]
+    else:
+        receivers.sort(key = lambda player: (player.x, player.y))
+        filtered_receivers = [receiver for receiver in receivers if receiver.x > formation.rt.x]
+
+    return filtered_receivers
 
 
 def get_formation_structure(formation):
@@ -182,4 +212,45 @@ def get_formation_structure(formation):
         return '3x2'
     return '4x1'
 
+
+
+def get_surface_structures(formation, direction):
+    surface_structure = []
+    number_of_receivers = get_number_of_receivers(formation, direction)
+    number_of_attached_receivers = get_number_of_attached_receivers(formation, direction)
+    if number_of_receivers == 0:
+        surface_structure.append('Zero Receivers')
+    elif number_of_receivers == 1:
+        surface_structure.append('One Receiver')
+    elif number_of_receivers == 2:
+        surface_structure.append('Two Receivers')
+    elif number_of_receivers == 3:
+        surface_structure.append('Three Receivers')
+    elif number_of_receivers == 4:
+        surface_structure.append('Four Receivers')
+    elif number_of_receivers == 5:
+        surface_structure.append('Five Receivers')
+
+    if number_of_receivers == 1 and number_of_attached_receivers == 1:
+        surface_structure.append('Nub')
+    if number_of_receivers == 1 and number_of_attached_receivers == 0:
+        surface_structure.append('Split')
+
+    if number_of_receivers == 2 and number_of_attached_receivers == 0:
+        surface_structure.append('Twin')
+    if number_of_receivers == 2 and number_of_attached_receivers == 1:
+        surface_structure.append('Pro')
+    if number_of_receivers == 2 and number_of_attached_receivers == 2:
+        surface_structure.append('Wing')
+
+    if number_of_receivers == 3 and number_of_attached_receivers == 0:
+        surface_structure.append('Trips')
+    if number_of_receivers == 3 and number_of_attached_receivers == 1:
+        surface_structure.append('Indy')
+    if number_of_receivers == 3 and number_of_attached_receivers == 2:
+        surface_structure.append('Indy Wing')
+    if number_of_receivers == 3 and number_of_attached_receivers == 3:
+        surface_structure.append('Tight Bunch')
+
+    return surface_structure
 
