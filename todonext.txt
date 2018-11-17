@@ -2,8 +2,8 @@
 
 --fix exception handling (dont except Exception)
 --add exception handling to script import 
-properly handle exceptions in power point export (simply skip the card)
-save a text file telling user which formations and defenses are nonexistent
+--properly handle exceptions in power point export (simply skip the card)
+--save a text file telling user which formations and defenses are nonexistent
 
 --excel script import
 --power point export
@@ -12,7 +12,7 @@ save a text file telling user which formations and defenses are nonexistent
 --automatically load config file
 --config file stores last saved libraries
 --automatically load libraries on startup, if possible
-open/save dialogs open in previous loaded directory
+--open/save dialogs open in previous loaded directory
 
 
 

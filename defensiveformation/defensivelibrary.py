@@ -18,6 +18,9 @@ class DefensiveLibrary:
 
         self.defenses[defense_name_upper] = defense_to_save
 
+    def does_defense_exist(self, defense_name):
+        return defense_name in self.defenses
+
     def delete_defense_from_library(self, defense_to_delete):
         try:
             del self.defenses[defense_to_delete]
@@ -26,17 +29,16 @@ class DefensiveLibrary:
 
     def save_library(self, filename):
         try:
-            file_object = open(filename, 'wb')
-            pickle.dump(self.defenses, file_object)
-            file_object.close()
+            with open(filename, 'wb') as file_object:
+                pickle.dump(self.defenses, file_object)
         except IOError as e:
             raise ScoutCardMakerException(str(e))
 
     def load_library(self, filename):
         try:
-            file_object = open(filename, 'rb')
-            defenses = pickle.load(file_object)
-            self.defenses = defenses
+            with open(filename, 'rb') as file_object:
+                defenses = pickle.load(file_object)
+                self.defenses = defenses
         except IOError as e:
             raise ScoutCardMakerException(str(e))
 

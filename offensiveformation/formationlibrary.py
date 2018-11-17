@@ -45,6 +45,9 @@ class FormationLibrary:
         self.formations[modified_formation_name] = formation_to_save
         self.formations[flipped_modified_formation_name] = flipped_formation_to_save
 
+    def does_formation_exist(self, formation_name):
+        return formation_name in self.formations
+
     def delete_formation_from_library(self, formation_name):
         formation_words = formation_name.strip().upper().split()
         formation_to_delete = formation_name
@@ -69,17 +72,16 @@ class FormationLibrary:
 
     def save_library(self, filename):
         try:
-            file_object = open(filename, 'wb')
-            pickle.dump(self.formations, file_object)
-            file_object.close()
+            with open(filename, 'wb') as file_object:
+                pickle.dump(self.formations, file_object)
         except IOError as e:
             raise ScoutCardMakerException(str(e))
 
     def load_library(self, filename):
         try:
-            file_object = open(filename, 'rb')
-            formations = pickle.load(file_object)
-            self.formations = formations
+            with open(filename, 'rb') as file_object:
+                formations = pickle.load(file_object)
+                self.formations = formations
         except IOError as e:
             raise ScoutCardMakerException(str(e))
 

@@ -84,6 +84,9 @@ class App(Tk):
                 messagebox.showerror('Open Library Error', e)
                 self.current_defense_library_filename = None
 
+        self.last_import_script_location = preferences.last_import_script_location
+        self.last_export_powerpoint_location = preferences.last_export_powerpoint_location
+
 
     def new_formation_library(self):
         self.current_formation_library_filename = None
@@ -171,16 +174,28 @@ class App(Tk):
 
     def create_scout_cards(self):
         try:
-            script_filename = filedialog.askopenfilename(initialdir=os.getcwd(), title="Select Script",
+            if self.last_import_script_location and os.path.isdir(self.last_import_script_location):
+                initial_dir = self.last_import_script_location
+            else:
+                initial_dir = os.getcwd()
+            script_filename = filedialog.askopenfilename(initialdir=initial_dir, title="Select Script",
                                                           filetypes=(("Excel", "*.xlsx"),))
             if script_filename:
+                self.last_import_script_location = os.path.dirname(script_filename)
                 plays = get_script_from_excel_file(self, script_filename)
-                cards_filename = filedialog.asksaveasfilename(initialdir=os.getcwd(),
+
+                if self.last_export_powerpoint_location and os.path.isdir(self.last_export_powerpoint_location):
+                    initial_dir = self.last_export_powerpoint_location
+                else:
+                    initial_dir = os.getcwd()
+
+                cards_filename = filedialog.asksaveasfilename(initialdir=initial_dir,
                                                                 title='Create Scout Cards',
                                                                 filetypes=(('Powerpoint', '*.pptx'),),
                                                                 defaultextension='.pptx')
 
                 if cards_filename:
+                    self.last_export_powerpoint_location = os.path.dirname(cards_filename)
                     export_to_powerpoint(cards_filename, plays,
                                          self.formation_library_editor_controller.formation_library,
                                          self.defense_editor_controller.defense_library)
@@ -201,6 +216,8 @@ class App(Tk):
         preferences = Preferences()
         preferences.last_saved_formation_library = self.current_formation_library_filename
         preferences.last_saved_defense_library = self.current_defense_library_filename
+        preferences.last_import_script_location = self.last_import_script_location
+        preferences.last_export_powerpoint_location = self.last_export_powerpoint_location
         preferences.save_preferences()
         self.destroy()
 
